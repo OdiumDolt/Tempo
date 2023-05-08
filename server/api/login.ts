@@ -1,4 +1,3 @@
-
 import sha256 from 'crypto-js/sha256';
 
 function getUUID(username:string) {
