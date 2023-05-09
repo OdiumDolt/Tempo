@@ -1,42 +1,21 @@
 # Tempo, Using Nuxt 3
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
-
 ## Setup
 
 Make sure to install the dependencies:
 
 ```bash
-# yarn
-yarn install
-
-# npm
 npm install
-
-# pnpm
-pnpm install
 ```
 
-## Development Server
+Create a .env file for supabase. Heres an example:
+```bash
+SUPABSE_URL="<YOUR SUPABASE_URL>"
+SUPABASE_KEY="<YOUR SUPABASE ANON KEY>"
+```
 
-Start the development server on `http://localhost:3000`
 
+Run dev server using
 ```bash
 npm run dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
