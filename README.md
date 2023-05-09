@@ -1,4 +1,5 @@
-# Tempo, Using Nuxt 3
+# Tempo uptime monitor ⚡
+Powered by Nuxt 3
 
 ## Setup
 
