@@ -1,11 +1,10 @@
 <template>
-    <div class="blured-background-obstruction" v-on:mousedown.self="destroy">
-        <slot></slot>
-    </div>
-
-    <div class="depth-checking">
-
-
+    <div>
+        <div class="blured-background-obstruction" v-on:mousedown.self="destroy">
+            <slot></slot>
+        </div>
+        <div class="depth-checking">
+        </div>
     </div>
 </template>
 
@@ -14,9 +13,6 @@
 export default {
     methods:{
         destroy(){
-            clearInterval(this.iterable)
-            window.removeEventListener('mouseup', this.is_node, false)
-            window.removeEventListener('mousemove', this.mouse_move, false)
             this.$emit('closePopUp')
         }
     }

@@ -1,12 +1,16 @@
 <template>
-    <ToolsPopup v-if="add_tracker_window" @closePopUp = "add_tracker_window = false">
-        <WebsiteHtmlAddWindow :style_theme="style_theme">
+    
+    <ToolsPopup v-if="add_tracker_window" @closePopUp = "closeAddWindow">
+        <WebsiteHtmlAddWindow :style_theme="style_theme" ref="child">
 
         </WebsiteHtmlAddWindow> 
     </ToolsPopup>
+    
     <div class="dashboard-container">
+        
         <side-bar @addTracker="add_tracker_window = true">
         </side-bar>
+        
         <info-pannel>
 
         </info-pannel>
@@ -26,7 +30,12 @@ export default {
             style_theme: "dark-mode"
         };
     },
-    methods: {},
+    methods: {
+        closeAddWindow(){
+            this.add_tracker_window = false
+        }
+
+    },
     async mounted() {
         // if there is no user_id, try to creat one
         if (this.user == null) {

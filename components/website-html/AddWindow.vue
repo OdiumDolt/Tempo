@@ -4,7 +4,7 @@
             <div class="url-input-container">
                 <input :placeholder="placeholderText" class="text-input">
             </div>
-            <ToolsSlider lass="slider" color="#1b4bcc" :style_theme="style_theme" ref="tool_slider" v-model="time_wait"></ToolsSlider>
+            <ToolsSlider lass="slider" color="#1b4bcc" :style_theme="style_theme" v-model="time_wait"></ToolsSlider>
         </div>
         <div class="container-bottom">
 
@@ -93,9 +93,6 @@ export default{
 
             return array;
         },
-        destory(){
-            // this.$refs.tool_slider.destroy()
-        }
     },
     mounted(){
         
