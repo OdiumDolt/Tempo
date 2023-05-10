@@ -4,7 +4,7 @@
             <div class="url-input-container">
                 <input :placeholder="placeholderText" class="text-input">
             </div>
-            <ToolsSlider lass="slider" color="#1b4bcc" :style_theme="style_theme"></ToolsSlider>
+            <ToolsSlider lass="slider" color="#1b4bcc" :style_theme="style_theme" ref="tool_slider" v-model="time_wait"></ToolsSlider>
         </div>
         <div class="container-bottom">
 
@@ -58,7 +58,8 @@ export default{
                 "nasa.gov",
                 "npmjs.org",
                 "pypi.org"
-            ]
+            ],
+            time_wait:10
         }
     },
 
@@ -91,11 +92,16 @@ export default{
             }
 
             return array;
+        },
+        destory(){
+            // this.$refs.tool_slider.destroy()
         }
     },
     mounted(){
         
 
+    },
+    watch:{
     }
 
 }

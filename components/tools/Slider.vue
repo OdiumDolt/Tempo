@@ -25,22 +25,21 @@
 <script lang="ts">
 
 export default {
-    props:["slider_start", 'slider_end', 'color', "style_theme"],
+    props:["slider_start", 'slider_end', 'color', "style_theme", "modelValue"],
+    emits: ['update:modelValue'],
     data(){
         return {
-            slider_precent: 0,
             is_node_clicked: false,
             mouse_pos: 0,
-            list_o_numbers:["001", "050", "100"]
+            list_o_numbers:["001", "050", "100"],
+            slider_precent: this.start_slider_precent
         }
     },
     methods:{
         is_node(e:any){
-
             this.is_node_clicked = false
         },
         mouse_move(e:any){
-
             if (this.is_node_clicked){
                 var target = document.getElementById("bar-container")
                 
@@ -59,12 +58,21 @@ export default {
                     else if ((x/target.offsetWidth * 100) < 0){
                         this.slider_precent = 0
                     }
+                    this.$emit("update:modelValue", this.slider_precent)
                 }
 
             }
         
+        },
+        destroy(){
+            // window.removeEventListener('mouseup', this.is_node, true)
+            // window.removeEventListener('mousemove', this.mouse_move, true)
         }
 
+    },
+    mounted(){
+        window.addEventListener('mouseup', this.is_node, false)
+        window.addEventListener('mousemove', this.mouse_move, false)
     },
     computed: {
         precent(){
@@ -81,14 +89,7 @@ export default {
             return {
                 'background-color':this.color
             }
-        }
-    },
-    mounted(){
-        window.addEventListener('mouseup', this.is_node, false)
-        window.addEventListener('mousemove', this.mouse_move, false)
-    },
-    beforeDestroy() {
-        console.log('beforeDestroy');
+        },
     },
 }
 
