@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-// let supabaseuser = useSupabaseUser()
+
 export default {
  
     data(){
