@@ -87,6 +87,9 @@ export default {
         window.addEventListener('mouseup', this.is_node, false)
         window.addEventListener('mousemove', this.mouse_move, false)
     },
+    beforeDestroy() {
+        console.log('beforeDestroy');
+    },
 }
 
 </script>

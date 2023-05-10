@@ -1,20 +1,14 @@
 <template>
-    <div class="blured-background-obstruction" v-on:mousedown.self="destroy">
-        <div class="add-new-tracker-container">
-            <div class="container-top">
-                <div class="url-input-container">
-                    <input :placeholder="placeholderText" class="text-input">
-                </div>
-                <slider class="slider" color="#1b4bcc" :style_theme="style_theme"></slider>
+    <div class="add-new-tracker-container">
+        <div class="container-top">
+            <div class="url-input-container">
+                <input :placeholder="placeholderText" class="text-input">
             </div>
-            <div class="container-bottom">
-
-            </div>
+            <ToolsSlider lass="slider" color="#1b4bcc" :style_theme="style_theme"></ToolsSlider>
         </div>
-    </div>
-    <div class="depth-checking">
+        <div class="container-bottom">
 
-
+        </div>
     </div>
 </template>
 
@@ -25,17 +19,24 @@ export default{
     data(){
         var is_itterating = false
         let iterable = setInterval(async () => {
+            
             if (!is_itterating){
+            
                 is_itterating = true
                 this.list_of_websites = this.shuffle(this.list_of_websites)
+            
                 for(let i = 0; i < this.list_of_websites.length; i++){
                     await this.iterateStringWithDelay(this.list_of_websites[i], 100)
+            
                     await new Promise(resolve => setTimeout(resolve, 1000));
+            
                     await this.removeStringWithDelay(this.list_of_websites[i], 100)
                 }
 
                 is_itterating = false
+            
             }
+
         }, 1000)
 
         return {
@@ -74,12 +75,6 @@ export default{
                 await new Promise(resolve => setTimeout(resolve, delay));
             }
         },
-        destroy(){
-            clearInterval(this.iterable)
-            window.removeEventListener('mouseup', this.is_node, false)
-            window.removeEventListener('mousemove', this.mouse_move, false)
-            this.$emit('closeTrackerWindow')
-        },
         shuffle(array:any){
             let currentIndex = array.length,  randomIndex;
 
@@ -109,22 +104,6 @@ export default{
 <style scoped lang="sass">
 @import '@/assets/styles/colors.sass'
 @import '@/assets/styles/fonts.sass'
-
-@keyframes slowBlur
-    to
-        background-color: rgb(22 22 22 / 75%)
-
-
-.blured-background-obstruction
-    animation: slowBlur 0.2s linear forwards
-    display: flex
-    align-content: center
-    justify-content: center
-    position: absolute
-    width: 100%
-    height: 100vh
-    margin: 0
-    top: 0px
 
 
 .add-new-tracker-container

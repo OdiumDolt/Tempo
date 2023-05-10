@@ -1,7 +1,9 @@
 <template>
-    <add-tracker-window v-if="add_tracker_window" @closeTrackerWindow = "add_tracker_window = false" :style_theme="style_theme">
-        
-    </add-tracker-window>
+    <ToolsPopup v-if="add_tracker_window" @closePopUp = "add_tracker_window = false">
+        <WebsiteHtmlAddWindow :style_theme="style_theme">
+
+        </WebsiteHtmlAddWindow> 
+    </ToolsPopup>
     <div class="dashboard-container">
         <side-bar @addTracker="add_tracker_window = true">
         </side-bar>
@@ -14,34 +16,31 @@
 
 <script lang="ts">
 
+
 export default {
- 
-    data(){
+    data() {
         return {
             user: useSupabaseUser(),
             client: useSupabaseClient(),
-            add_tracker_window:false,
-            style_theme:"dark-mode"
-        }
+            add_tracker_window: false,
+            style_theme: "dark-mode"
+        };
     },
-    methods:{
-
-    },
-    async mounted(){
+    methods: {},
+    async mounted() {
         // if there is no user_id, try to creat one
-        if (this.user == null){
-            window.location.href = '/login'
+        if (this.user == null) {
+            window.location.href = "/login";
         }
         var data = get_user_trackers(this.client, this.user)
-        .then(data => {
-            useState('web_trackers', () => data["website_trackers"])
+            .then(data => {
+            useState("web_trackers", () => data["website_trackers"]);
         })
-        .catch(error => {
-            console.error(error)
-        })
+            .catch(error => {
+            console.error(error);
+        });
         // TODO, currently assumes that creating a new row for user_id worked
         // TODO, currently assumes that a user exists, should redirect back to /login if not.
-
     },
 }
 </script>
