@@ -32,7 +32,7 @@ export default {
             is_node_clicked: false,
             mouse_pos: 0,
             list_o_numbers:["001", "050", "100"],
-            slider_precent: this.start_slider_precent
+            slider_precent: this.modelValue
         }
     },
     methods:{
@@ -65,14 +65,14 @@ export default {
         
         },
         destroy(){
-            // window.removeEventListener('mouseup', this.is_node, true)
-            // window.removeEventListener('mousemove', this.mouse_move, true)
         }
 
     },
     mounted(){
-        window.addEventListener('mouseup', this.is_node, false)
-        window.addEventListener('mousemove', this.mouse_move, false)
+        for(let i = 0; i < 100; i++){
+            mouse_listeners.mouse_move["slider_" + i.toString()]= this.mouse_move
+            mouse_listeners.mouse_up["slider_" + i.toString()] = this.is_node
+        }
     },
     computed: {
         precent(){

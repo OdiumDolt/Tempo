@@ -1,7 +1,7 @@
 <template>
     
     <ToolsPopup v-if="add_tracker_window" @closePopUp = "closeAddWindow">
-        <WebsiteHtmlAddWindow :style_theme="style_theme" ref="child">
+        <WebsiteHtmlAddWindow :style_theme="style_theme">
 
         </WebsiteHtmlAddWindow> 
     </ToolsPopup>
@@ -50,6 +50,9 @@ export default {
         });
         // TODO, currently assumes that creating a new row for user_id worked
         // TODO, currently assumes that a user exists, should redirect back to /login if not.
+
+        window.addEventListener("mousemove", mouse_move_func, false)
+        window.addEventListener("mouseup", mouse_up_func, false)
     },
 }
 </script>
