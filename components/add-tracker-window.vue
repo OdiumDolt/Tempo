@@ -132,11 +132,8 @@ export default{
     margin: auto
     width: 35%
     max-width: 500px
-    // height: 200px
     border-radius: 5px
     flex-direction: column
-    // padding: 10px
-    // gap: 10px
 
 .container-top
     background-color: $grey

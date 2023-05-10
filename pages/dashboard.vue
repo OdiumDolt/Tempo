@@ -1,5 +1,7 @@
 <template>
-    <add-tracker-window v-if="add_tracker_window" @closeTrackerWindow = "add_tracker_window = false" :style_theme="style_theme"></add-tracker-window>
+    <add-tracker-window v-if="add_tracker_window" @closeTrackerWindow = "add_tracker_window = false" :style_theme="style_theme">
+        
+    </add-tracker-window>
     <div class="dashboard-container">
         <side-bar @addTracker="add_tracker_window = true">
         </side-bar>
@@ -11,8 +13,9 @@
 </template>
 
 <script lang="ts">
-
+// let supabaseuser = useSupabaseUser()
 export default {
+ 
     data(){
         return {
             user: useSupabaseUser(),
@@ -26,6 +29,9 @@ export default {
     },
     async mounted(){
         // if there is no user_id, try to creat one
+        if (this.user == null){
+            window.location.href = '/login'
+        }
         var data = get_user_trackers(this.client, this.user)
         .then(data => {
             useState('web_trackers', () => data["website_trackers"])
@@ -34,7 +40,7 @@ export default {
             console.error(error)
         })
         // TODO, currently assumes that creating a new row for user_id worked
-        
+        // TODO, currently assumes that a user exists, should redirect back to /login if not.
 
     },
 }
