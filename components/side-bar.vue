@@ -5,11 +5,9 @@
     
     <div class="search-pallete" :class="{'small-flex-gap': !small_add}">
         
-        <div class="add-button" :class="{'smaller-button':small_add}" @click="$emit('addTracker')">
-            <svg class="svg-add" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 12H9M12 12H20M12 4V20" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
+        <ToolsButton :theme="'blue-select'" class="add-button" :class="{'smaller-button': small_add}" @click="$emit('addTracker')">
+            Add Tracker
+        </ToolsButton>
         
         <input class="search-input" v-on:focus="small_add = true"  v-on:blur="small_add = false" type="search" placeholder="🔍Search">
     </div>
@@ -99,16 +97,8 @@ export default {
     display: flex
     align-content: center
     justify-content: center
-    transition-duration: 0.3s
-    background-color: $royal-blue
-    border-radius: 5px
-    box-sizing: border-box
-    padding-top: 4px
-    padding-bottom: 4px
-    padding-right: 2px
-
-.add-button:hover
-    border: thin solid $outline-blue
+    white-space: nowrap
+    transition: width .2s, opacity 0.2s
 
 .smaller-button
     width: 0px

@@ -7,7 +7,17 @@
             <ToolsSlider lass="slider" color="#1b4bcc" :style_theme="style_theme" v-model="time_wait"></ToolsSlider>
         </div>
         <div class="container-bottom">
-
+            <ToolsButton :theme="'dark-cancel'" class="buttons" @click="$emit('closePopUp')">
+                Cancel
+            </ToolsButton>
+            <ToolsButton :theme="'blue-select'" class="buttons" @click="validation = !validation">
+                <div v-if="!validation">
+                    Apply Tracker
+                </div>
+                <div v-else class="flashing-dots">
+                    <div class="dot-flashing"></div>
+                </div>
+            </ToolsButton>
         </div>
     </div>
 </template>
@@ -17,32 +27,8 @@ export default{
     props:["style_theme"],
     
     data(){
-        var is_itterating = false
-        let iterable = setInterval(async () => {
-            
-            if (!is_itterating){
-            
-                is_itterating = true
-                this.list_of_websites = this.shuffle(this.list_of_websites)
-            
-                for(let i = 0; i < this.list_of_websites.length; i++){
-                    await this.iterateStringWithDelay(this.list_of_websites[i], 100)
-            
-                    await new Promise(resolve => setTimeout(resolve, 1000));
-            
-                    await this.removeStringWithDelay(this.list_of_websites[i], 100)
-                }
 
-                is_itterating = false
-            
-            }
-
-        }, 1000)
-
-        return {
-            placeholderText: "",
-            iterable: iterable,
-            list_of_websites:[
+        const list_of_websites: string[] = [
                 "google.com", 
                 "monkeytype.com", 
                 "coolmathgames.com", 
@@ -58,8 +44,36 @@ export default{
                 "nasa.gov",
                 "npmjs.org",
                 "pypi.org"
-            ],
-            time_wait:10
+            ]
+
+        var is_itterating = false
+        let iterable = setInterval(async () => {
+            
+            if (!is_itterating){
+            
+                is_itterating = true
+                this.list_of_websites = this.shuffle(this.list_of_websites)
+            
+                for(let i = 0; i < list_of_websites.length; i++){
+                    await this.iterateStringWithDelay(list_of_websites[i], 100)
+            
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+            
+                    await this.removeStringWithDelay(list_of_websites[i], 100)
+                }
+
+                is_itterating = false
+            
+            }
+
+        }, 1000)
+
+        return {
+            placeholderText: "",
+            iterable: iterable,
+            list_of_websites:list_of_websites,
+            time_wait:10,
+            validation:false
         }
     },
 
@@ -107,7 +121,7 @@ export default{
 <style scoped lang="sass">
 @import '@/assets/styles/colors.sass'
 @import '@/assets/styles/fonts.sass'
-
+@import '@/assets/styles/animations.sass'
 
 .add-new-tracker-container
     display: flex
@@ -135,6 +149,11 @@ export default{
     border-top: none
     height: 60px
     background-color: $grey
+    display: flex
+    justify-content: right
+    align-items: center
+    padding-right: 10px
+    gap:10px
 
 .text-input
     background-color: $grey
@@ -159,4 +178,13 @@ export default{
     width: 96%
     margin-right: auto
     margin-left: auto
+
+.flashing-dots
+    width: 45px
+    align-items: center
+    justify-content: center
+    display: flex
+    height: 15px
+
+
 </style>

@@ -1,7 +1,7 @@
 <template>
     
     <ToolsPopup v-if="add_tracker_window" @closePopUp = "closeAddWindow">
-        <WebsiteHtmlAddWindow :style_theme="style_theme">
+        <WebsiteHtmlAddWindow :style_theme="style_theme" @closePopUp = "closeAddWindow" @validation_check="">
 
         </WebsiteHtmlAddWindow> 
     </ToolsPopup>
@@ -33,6 +33,9 @@ export default {
     methods: {
         closeAddWindow(){
             this.add_tracker_window = false
+        },
+        ValidateAddWebsite(website_data: any){
+
         }
 
     },
