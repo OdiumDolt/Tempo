@@ -11,7 +11,7 @@
             <side-bar @addTracker="add_tracker_window = true" :style_theme="style_theme">
             </side-bar>
             
-            <info-pannel>
+            <info-pannel :style_theme="style_theme">
 
             </info-pannel>
         </div>
@@ -66,7 +66,7 @@ export default {
 </script>
 
 <style lang="sass">
-@import '@/assets/styles/dark-mode-colors.sass'
+@import '@/assets/styles/colors.sass'
 
 .dashboard-container
     display: flex
@@ -81,7 +81,7 @@ export default {
     height: 100vh
 
 .body.light-mode
-    background-color: white
+    background-color: $grey-8
 .body.dark-mode
     background-color: #111111
 

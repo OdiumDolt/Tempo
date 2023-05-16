@@ -1,15 +1,33 @@
 <template>
     <div class="add-new-tracker-container">
+        
+        <!-- Top Container for the window -->
         <div class="container-top">
-            <div class="url-input-container">
-                <input :placeholder="placeholderText" class="text-input">
-            </div>
-            <ToolsSlider class="slider" color="#1b4bcc" :style_theme="style_theme" v-model="interval"></ToolsSlider>
+            <ToolsInputField 
+            
+                v-model="url" 
+                :style_theme="style_theme" 
+                :placeholder="placeholderText">
+            
+            </ToolsInputField>
+            
+            <ToolsSlider 
+            
+                class="slider" 
+                color="#1b4bcc" 
+                :style_theme="style_theme" 
+                v-model="interval">
+            
+            </ToolsSlider>
         </div>
+        
+        <!-- Bottom window for the tracker container -->
         <div class="container-bottom">
+            
             <ToolsButton :theme="'dark-cancel'" class="buttons" @click="$emit('closePopUp')">
                 Cancel
             </ToolsButton>
+            
             <ToolsButton :theme="'blue-select'" class="buttons" @click="validation = !validation">
                 <div v-if="!validation">
                     Apply Tracker
@@ -18,8 +36,11 @@
                     <div class="dot-flashing"></div>
                 </div>
             </ToolsButton>
+        
         </div>
+    
     </div>
+
 </template>
 
 <script lang="ts">
@@ -34,7 +55,8 @@ export default{
             interval:100,
             validation:false,
             is_itterating:false,
-            text_interval: interval
+            text_interval: interval,
+            url:""
         }
     },
 
@@ -104,7 +126,7 @@ export default{
 </script>
 
 <style scoped lang="sass">
-@import '@/assets/styles/dark-mode-colors.sass'
+@import '@/assets/styles/colors.sass'
 @import '@/assets/styles/fonts.sass'
 @import '@/assets/styles/animations.sass'
 
@@ -140,24 +162,6 @@ export default{
     padding-right: 10px
     gap:10px
 
-.text-input
-    background-color: $grey-1
-    outline: none
-    border: none
-    padding: 10px
-    border-radius: 5px
-    color: #f5f5f5
-    border: thin #4f4f4f solid
-    font-family: 'Roboto', sans-serif 
-    width: 100%
-    box-sizing: border-box
-    font-size: 15px
-
-.text-input:focus
-    outline: thin solid $blue-2  
-
-.url-input-container
-    width: 100%
     
 
 .flashing-dots

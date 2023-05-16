@@ -8,8 +8,14 @@
         <ToolsButton :theme="'blue-select'" class="add-button" :class="{'smaller-button': small_add}" @click="$emit('addTracker')">
             Add Tracker
         </ToolsButton>
-        
-        <input class="search-input" v-on:focus="small_add = true"  v-on:blur="small_add = false" type="search" placeholder="🔍Search">
+        <ToolsInputField 
+        :style_theme="style_theme"
+        v-on:focus="small_add = true"
+        v-on:blur="small_add = false"
+        type="search"
+        :placeholder="'🔍Search'">
+
+        </ToolsInputField>
     </div>
     
     <div class="tracker-items" :class="[style_theme]">
@@ -40,7 +46,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import '@/assets/styles/dark-mode-colors.sass'
+@import '@/assets/styles/colors.sass'
+
+
 
 .side-bar-container
     display: flex
@@ -52,7 +60,9 @@ export default {
 .side-bar-item
     padding: 10px
     border-radius: 5px
-    height: 65px
+    height: 86px
+    box-sizing: border-box
+    font-family: 'Reem Kufi Fun', sans-serif
 
 .side-bar-item.dark-mode
     background-color: $grey-1
@@ -60,7 +70,9 @@ export default {
 
 .side-bar-item.light-mode
     color: black
-    background-color: white
+    background-color: $grey-7
+    border: thin solid $grey-7
+    font-size: 20px
 
 .tracker-items
     overflow-y: scroll
