@@ -1,19 +1,20 @@
 <template>
-    
-    <ToolsPopup v-if="add_tracker_window" @closePopUp = "closeAddWindow">
-        <WebsiteHtmlAddWindow :style_theme="style_theme" @closePopUp = "closeAddWindow" @validation_check="AddWebsiteTracker" ref='add_window'>
+    <div class="body" :class="[style_theme]">
+        <ToolsPopup v-if="add_tracker_window" @closePopUp = "closeAddWindow">
+            <WebsiteHtmlAddWindow :style_theme="style_theme" @closePopUp = "closeAddWindow" @validation_check="AddWebsiteTracker" ref='add_window'>
 
-        </WebsiteHtmlAddWindow> 
-    </ToolsPopup>
-    
-    <div class="dashboard-container">
+            </WebsiteHtmlAddWindow> 
+        </ToolsPopup>
         
-        <side-bar @addTracker="add_tracker_window = true" :style_theme="style_theme">
-        </side-bar>
-        
-        <info-pannel>
+        <div class="dashboard-container">
+            
+            <side-bar @addTracker="add_tracker_window = true" :style_theme="style_theme">
+            </side-bar>
+            
+            <info-pannel>
 
-        </info-pannel>
+            </info-pannel>
+        </div>
     </div>
 
 </template>
@@ -73,5 +74,15 @@ export default {
     margin: 10px
     height: calc(100vh - 20px)
     gap: 20px
+
+.body
+    position: absolute
+    width: 100%
+    height: 100vh
+
+.body.light-mode
+    background-color: white
+.body.dark-mode
+    background-color: #111111
 
 </style>

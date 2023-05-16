@@ -7,8 +7,7 @@
 
 
 <style>
-body{
+body, html{
   margin: 0;
-  background-color: #0b0b0c;
 }
 </style>

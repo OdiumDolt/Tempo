@@ -43,11 +43,11 @@ button.blue-select
     color: white
     background-color: $blue-1
     border: thin $blue-2 solid
-    transition: box-shadow 0.2s, 
+    transition: box-shadow 0.2s, border-color 0.3s
 
 button.blue-select:hover
-    box-shadow:0px 0px 10px $blue-1
-    
+    box-shadow:0px 0px 17px $blue-1
+    border-color: $blue-1
     
 button.dark-cancel
     color: $grey-5
@@ -57,7 +57,5 @@ button.dark-cancel
 
 button.dark-cancel:hover
     border-color: $grey-4
-
-
 
 </style>
