@@ -59,8 +59,8 @@ export default {
 
 $black: #000000
 $grey: #18181B
-$border-grey: #2c2c2e
-$outline-blue: #4d6ab8
+$grey-2: #2c2c2e
+$blue-2: #4d6ab8
 .window-container
     height: 100vh
     display: flex
@@ -79,7 +79,7 @@ $outline-blue: #4d6ab8
     padding: 20px
     border-radius: 10px
     box-shadow: 0px 1px 33px 0px rgba(0,0,0,0.63)
-    border: thin $border-grey solid
+    border: thin $grey-2 solid
 
 .login-text
     text-align: center
@@ -95,10 +95,10 @@ $outline-blue: #4d6ab8
     padding: 10px
     border-radius: 5px
     color: #F4EEE0
-    border: thin $border-grey solid
+    border: thin $grey-2 solid
     font-family: 'Roboto', sans-serif
 .text-input:focus
-    outline: thin solid $outline-blue  
+    outline: thin solid $blue-2  
 
 .signup-login-container
     display: flex
@@ -121,7 +121,7 @@ $outline-blue: #4d6ab8
     align-self: center
     margin-top: 10px
 .click-button:hover
-    border-color: $outline-blue
+    border-color: $blue-2
 
 .signup-text
     color: #e6e6e6

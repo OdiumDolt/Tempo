@@ -4,7 +4,7 @@
             <div class="url-input-container">
                 <input :placeholder="placeholderText" class="text-input">
             </div>
-            <ToolsSlider lass="slider" color="#1b4bcc" :style_theme="style_theme" v-model="time_wait"></ToolsSlider>
+            <ToolsSlider class="slider" color="#1b4bcc" :style_theme="style_theme" v-model="interval"></ToolsSlider>
         </div>
         <div class="container-bottom">
             <ToolsButton :theme="'dark-cancel'" class="buttons" @click="$emit('closePopUp')">
@@ -27,53 +27,14 @@ export default{
     props:["style_theme"],
     
     data(){
-
-        const list_of_websites: string[] = [
-                "google.com", 
-                "monkeytype.com", 
-                "coolmathgames.com", 
-                "github.com",
-                "youtube.com",
-                "reddit.com",
-                "twitter.com",
-                "instagram.com",
-                "twitch.tv/hasanabi",
-                "yahoo.ca",
-                "github.com/OdiumDolt",
-                "en.wikipedia.org",
-                "nasa.gov",
-                "npmjs.org",
-                "pypi.org"
-            ]
-
-        var is_itterating = false
-        let iterable = setInterval(async () => {
-            
-            if (!is_itterating){
-            
-                is_itterating = true
-                this.list_of_websites = this.shuffle(this.list_of_websites)
-            
-                for(let i = 0; i < list_of_websites.length; i++){
-                    await this.iterateStringWithDelay(list_of_websites[i], 100)
-            
-                    await new Promise(resolve => setTimeout(resolve, 1000));
-            
-                    await this.removeStringWithDelay(list_of_websites[i], 100)
-                }
-
-                is_itterating = false
-            
-            }
-
-        }, 1000)
-
+        var interval = setInterval(async () => {this.iteratePlaceHolder()}, 1000)
         return {
             placeholderText: "",
-            iterable: iterable,
-            list_of_websites:list_of_websites,
-            time_wait:10,
-            validation:false
+            websites: list_of_websites,
+            interval:100,
+            validation:false,
+            is_itterating:false,
+            text_interval: interval
         }
     },
 
@@ -90,6 +51,28 @@ export default{
                 await new Promise(resolve => setTimeout(resolve, delay));
             }
         },
+        async iteratePlaceHolder(){
+            console.log('gaming')
+            if (!this.is_itterating){
+            
+                this.is_itterating = true
+                this.websites = this.shuffle(this.websites)
+            
+                for(let i = 0; i < this.websites.length; i++){
+                    await this.iterateStringWithDelay(this.websites[i], 100)
+            
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+            
+                    await this.removeStringWithDelay(this.websites[i], 100)
+                }
+
+                this.is_itterating = false
+            
+            }
+
+        },
+
+        // thanks stackoverflow
         shuffle(array:any){
             let currentIndex = array.length,  randomIndex;
 
@@ -107,9 +90,11 @@ export default{
 
             return array;
         },
+        $destroy(){
+            clearInterval(this.interval)
+        }
     },
     mounted(){
-        
 
     },
     watch:{
@@ -119,7 +104,7 @@ export default{
 </script>
 
 <style scoped lang="sass">
-@import '@/assets/styles/colors.sass'
+@import '@/assets/styles/dark-mode-colors.sass'
 @import '@/assets/styles/fonts.sass'
 @import '@/assets/styles/animations.sass'
 
@@ -132,8 +117,8 @@ export default{
     flex-direction: column
 
 .container-top
-    background-color: $grey
-    border: thin solid $border-grey
+    background-color: $grey-1
+    border: thin solid $grey-2
     height: 100%
     padding: 10px
     border-top-right-radius: 5px
@@ -143,12 +128,12 @@ export default{
     gap: 20px
 
 .container-bottom
-    border: thin solid $border-grey
+    border: thin solid $grey-2
     border-bottom-left-radius: 5px
     border-bottom-right-radius: 5px
     border-top: none
     height: 60px
-    background-color: $grey
+    background-color: $grey-1
     display: flex
     justify-content: right
     align-items: center
@@ -156,7 +141,7 @@ export default{
     gap:10px
 
 .text-input
-    background-color: $grey
+    background-color: $grey-1
     outline: none
     border: none
     padding: 10px
@@ -169,15 +154,11 @@ export default{
     font-size: 15px
 
 .text-input:focus
-    outline: thin solid $outline-blue  
+    outline: thin solid $blue-2  
 
 .url-input-container
     width: 100%
     
-.slider
-    width: 96%
-    margin-right: auto
-    margin-left: auto
 
 .flashing-dots
     width: 45px

@@ -3,7 +3,7 @@
 
 <div class="side-bar-container">
     
-    <div class="search-pallete" :class="{'small-flex-gap': !small_add}">
+    <div class="search-pallete" :class="[style_theme, {'small-flex-gap': !small_add}]">
         
         <ToolsButton :theme="'blue-select'" class="add-button" :class="{'smaller-button': small_add}" @click="$emit('addTracker')">
             Add Tracker
@@ -12,8 +12,8 @@
         <input class="search-input" v-on:focus="small_add = true"  v-on:blur="small_add = false" type="search" placeholder="🔍Search">
     </div>
     
-    <div class="tracker-items">
-        <div class="side-bar-item" v-for="tracker in web_trackers">
+    <div class="tracker-items" :class="[style_theme]">
+        <div class="side-bar-item" v-for="tracker in web_trackers" :class="[style_theme]">
             {{ tracker['name'] }}
         </div>
     </div>
@@ -25,6 +25,7 @@
 <script lang="ts">
 
 export default {
+    props:['style_theme'],
     data(){
         return {
             web_trackers: useState("web_trackers"),
@@ -32,16 +33,14 @@ export default {
         }
     },
     methods:{
-        set_curret_tracker(item:any){
-            console.log(item)
-        },
+
     }
 }
 
 </script>
 
 <style lang="sass" scoped>
-@import '@/assets/styles/colors.sass'
+@import '@/assets/styles/dark-mode-colors.sass'
 
 .side-bar-container
     display: flex
@@ -51,11 +50,17 @@ export default {
     width: 20%
 
 .side-bar-item
-    background-color: $grey
     padding: 10px
     border-radius: 5px
-    color: white
     height: 65px
+
+.side-bar-item.dark-mode
+    background-color: $grey-1
+    color: white
+
+.side-bar-item.light-mode
+    color: black
+    background-color: white
 
 .tracker-items
     overflow-y: scroll
@@ -71,6 +76,7 @@ export default {
     flex-direction: row
     align-items: center
     justify-content: space-evenly
+    transition: 0.1s
 
 .small-flex-gap
     gap: 10px
@@ -79,7 +85,7 @@ export default {
     gap: 0px
 
 .search-input
-    background-color: $grey
+    background-color: $grey-1
     outline: none
     border: none
     border-radius: 5px
@@ -89,7 +95,7 @@ export default {
 
 
 .search-input:focus
-    outline: thin solid $outline-blue  
+    outline: thin solid $blue-2  
 
 .add-button
     width: 100%
@@ -104,6 +110,4 @@ export default {
     width: 0px
     opacity: 0
     display: hidden
-
-
 </style>

@@ -10,8 +10,6 @@
 
 
 <script lang="ts">
-import { mode } from 'crypto-js';
-
 export default {
     props:['style_theme', 'theme'],
     data(){
@@ -26,7 +24,7 @@ export default {
 </script>
 
 <style scoped lang="sass">
-@import '@/assets/styles/colors.sass'
+@import '@/assets/styles/dark-mode-colors.sass'
 @import '@/assets/styles/fonts.sass'
 
 button
@@ -39,25 +37,26 @@ button
     width: inherit
 
 button.dark-mode
-    color: $eggshell
+    color: $grey-1
 
 button.blue-select
     color: white
-    background-color: $royal-blue
-    border: thin $outline-blue solid
-    transition: box-shadow 0.2s
+    background-color: $blue-1
+    border: thin $blue-2 solid
+    transition: box-shadow 0.2s, 
 
 button.blue-select:hover
-    box-shadow:0px 0px 10px $royal-blue
+    box-shadow:0px 0px 10px $blue-1
+    
     
 button.dark-cancel
-    color: $eggshell
-    background-color: $button-grey
-    border: $border-grey thin solid
+    color: $grey-5
+    background-color: $grey-2
+    border: $grey-3 thin solid
     transition: 0.1s linear
 
 button.dark-cancel:hover
-    border-color: #5a5959
+    border-color: $grey-4
 
 
 

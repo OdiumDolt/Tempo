@@ -1,14 +1,14 @@
 <template>
     
     <ToolsPopup v-if="add_tracker_window" @closePopUp = "closeAddWindow">
-        <WebsiteHtmlAddWindow :style_theme="style_theme" @closePopUp = "closeAddWindow" @validation_check="">
+        <WebsiteHtmlAddWindow :style_theme="style_theme" @closePopUp = "closeAddWindow" @validation_check="AddWebsiteTracker" ref='add_window'>
 
         </WebsiteHtmlAddWindow> 
     </ToolsPopup>
     
     <div class="dashboard-container">
         
-        <side-bar @addTracker="add_tracker_window = true">
+        <side-bar @addTracker="add_tracker_window = true" :style_theme="style_theme">
         </side-bar>
         
         <info-pannel>
@@ -34,9 +34,10 @@ export default {
     },
     methods: {
         closeAddWindow(){
+            (this.$refs.add_window as any).$destroy()
             this.add_tracker_window = false
         },
-        ValidateAddWebsite(website_data: Tracker){
+        AddWebsiteTracker(website_data: Tracker){
             // add_tracker(this.user, this.client, )
         }
 
@@ -64,7 +65,7 @@ export default {
 </script>
 
 <style lang="sass">
-@import '@/assets/styles/colors.sass'
+@import '@/assets/styles/dark-mode-colors.sass'
 
 .dashboard-container
     display: flex

@@ -96,7 +96,7 @@ export default {
 </script>
 
 <style scoped lang="sass">
-@import '@/assets/styles/colors.sass'
+@import '@/assets/styles/dark-mode-colors.sass'
 
 .bar-container
     width: 100%
