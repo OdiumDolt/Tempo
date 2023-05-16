@@ -27,15 +27,17 @@ export default {
             user: useSupabaseUser(),
             client: useSupabaseClient(),
             add_tracker_window: false,
-            style_theme: "dark-mode"
+            style_theme: "dark-mode",
+            trackers: []
+
         };
     },
     methods: {
         closeAddWindow(){
             this.add_tracker_window = false
         },
-        ValidateAddWebsite(website_data: any){
-
+        ValidateAddWebsite(website_data: Tracker){
+            // add_tracker(this.user, this.client, )
         }
 
     },
@@ -46,7 +48,8 @@ export default {
         }
         var data = get_user_trackers(this.client, this.user)
             .then(data => {
-            useState("web_trackers", () => data["website_trackers"]);
+            this.trackers = data['website_trackers']
+            useState("web_trackers", () => this.trackers);
         })
             .catch(error => {
             console.error(error);

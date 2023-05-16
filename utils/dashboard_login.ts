@@ -12,12 +12,9 @@ async function get_user_trackers(client:any, user:any) {
             
             console.warn("Row in userTrackingData for user_id not found, creating one now...")
 
-            const user_data:any = {
-                user_id: user.id
-            }
             
             // create the new table, and retry a request to the server
-            await client.from("userTrackingData").insert(user_data)
+            await client.from("userTrackingData").insert(user.id)
         }
         
         // if no errors occured, return the data object
@@ -31,6 +28,11 @@ async function get_user_trackers(client:any, user:any) {
     throw new Error("Not able to get userTrackingData")
 }
 
+async function add_tracker(user:any, client:any, trackers:Tracker[]){
+    await client.from('userTrackingData').from(user.id).insert([trackers])
+}
+
 export {
-    get_user_trackers
+    get_user_trackers,
+    add_tracker
 }
