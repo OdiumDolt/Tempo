@@ -1,0 +1,43 @@
+@import '@/assets/styles/colors.sass'
+  
+@keyframes dot-flashing
+  0%
+    background-color: $outline-blue
+  50%, 100%
+    background-color: #224ea0
+
+.dot-flashing
+  position: relative
+  width: 20%
+  aspect-ratio: 1/1
+  border-radius: 5px
+  background-color: $outline-blue
+  color: $outline-blue
+  animation: dot-flashing 0.5s infinite linear alternate
+  animation-delay: 0.25s
+
+  &::before, &::after
+    content: ""
+    display: inline-block
+    position: absolute
+    top: 0
+
+  &::before
+    left: -15px
+    width: 100%
+    aspect-ratio: 1/1
+    border-radius: 5px
+    background-color: $outline-blue
+    color: $outline-blue
+    animation: dot-flashing 0.5s infinite alternate
+    animation-delay: 0s
+
+  &::after
+    left: 15px
+    width: 100%
+    aspect-ratio: 1/1
+    border-radius: 5px
+    background-color: $outline-blue
+    color: $outline-blue
+    animation: dot-flashing 0.5s infinite alternate
+    animation-delay: 0.5s
