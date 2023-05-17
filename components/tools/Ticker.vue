@@ -31,7 +31,13 @@ export default {
         }
 
     },
-
+    watch:{
+        modelValue(){
+            const starting_index = this.options.indexOf(this.modelValue)
+            this.model = starting_index
+        }
+    },
+    
     computed:{
         is_clicked_precent(){
             if (this.model){
