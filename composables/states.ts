@@ -1,4 +1,4 @@
-const useTheme = () => useState<string>('color', () => 'light-mode')
+const useTheme = () => useState<string>('color', () => 'dark-mode')
 
 export {
     useTheme
