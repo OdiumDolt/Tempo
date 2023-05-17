@@ -56,7 +56,7 @@ export default {
 </script>
 
 
-<style lang="sass">
+<style scoped lang="sass">
 @import '@/assets/styles/colors.sass'
 .full-width
     width: 45px
