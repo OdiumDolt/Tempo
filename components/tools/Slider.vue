@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="number-spacers-container">
-        <div v-for="num in list_o_numbers" class="number-spacers" :class="[style_theme]">
+        <div v-for="num in iterables" class="number-spacers" :class="[style_theme]">
             {{ num }}
         </div>
     </div>
@@ -25,13 +25,12 @@
 <script lang="ts">
 
 export default {
-    props:["slider_start", 'slider_end', 'color', "style_theme", "modelValue"],
+    props:["slider_start", 'slider_end', 'color', "style_theme", "modelValue", "iterables"],
     emits: ['update:modelValue'],
     data(){
         return {
             is_node_clicked: false,
             mouse_pos: 0,
-            list_o_numbers:["001", "050", "100"],
             slider_precent: this.modelValue
         }
     },
@@ -65,6 +64,7 @@ export default {
         
         },
         destroy(){
+        
         }
 
     },
