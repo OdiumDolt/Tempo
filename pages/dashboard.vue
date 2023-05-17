@@ -28,7 +28,7 @@ export default {
             user: useSupabaseUser(),
             client: useSupabaseClient(),
             add_tracker_window: false,
-            style_theme: "dark-mode",
+            style_theme: "light-mode",
             trackers: []
 
         };

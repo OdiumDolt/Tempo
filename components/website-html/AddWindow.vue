@@ -1,8 +1,8 @@
 <template>
-    <div class="add-new-tracker-container">
+    <div class="add-new-tracker-container" :class="[style_theme]">
         
         <!-- Top Container for the window -->
-        <div class="container-top">
+        <div class="container-top" :class="[style_theme]">
             <ToolsInputField 
             
                 v-model="url" 
@@ -22,9 +22,9 @@
         </div>
         
         <!-- Bottom window for the tracker container -->
-        <div class="container-bottom">
+        <div class="container-bottom" :class="[style_theme]">
             
-            <ToolsButton :theme="'dark-cancel'" class="buttons" @click="$emit('closePopUp')">
+            <ToolsButton :theme="'cancel'" class="buttons" @click="$emit('closePopUp')" :style_theme="style_theme">
                 Cancel
             </ToolsButton>
             
@@ -139,8 +139,6 @@ export default{
     flex-direction: column
 
 .container-top
-    background-color: $grey-1
-    border: thin solid $grey-2
     height: 100%
     padding: 10px
     border-top-right-radius: 5px
@@ -149,20 +147,29 @@ export default{
     flex-direction: column
     gap: 20px
 
-.container-bottom
+.container-top.dark-mode
+    background-color: $grey-1
     border: thin solid $grey-2
+
+.container-top.light-mode
+    background-color: $grey-8
+    border: thin solid $grey-7
+
+
+.container-bottom
     border-bottom-left-radius: 5px
     border-bottom-right-radius: 5px
     border-top: none
     height: 60px
-    background-color: $grey-1
     display: flex
     justify-content: right
     align-items: center
     padding-right: 10px
-    gap:10px
+    gap: 10px
 
-    
+.container-bottom.light-mode
+    background-color: $grey-8
+    border: thin solid $grey-7
 
 .flashing-dots
     width: 45px
