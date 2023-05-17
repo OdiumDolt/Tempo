@@ -23,7 +23,7 @@
             {{ tracker['name'] }}
         </div>
     </div>
-
+    <ToolsTicker :style_theme="style_theme"></ToolsTicker>
 </div>
 
 </template>
