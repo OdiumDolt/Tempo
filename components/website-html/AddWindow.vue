@@ -113,7 +113,7 @@ export default{
             return array;
         },
         $destroy(){
-            clearInterval(this.interval)
+            clearInterval(this.text_interval)
         }
     },
     mounted(){
