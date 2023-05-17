@@ -38,4 +38,5 @@ export default {
     height: 100vh
     margin: 0
     top: 0px
+    z-index: 10
 </style>

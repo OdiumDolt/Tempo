@@ -1,5 +1,6 @@
 <template>
     <div class="body" :class="[style_theme]">
+        
         <ToolsPopup v-if="add_tracker_window" @closePopUp = "closeAddWindow">
             <WebsiteHtmlAddWindow :style_theme="style_theme" @closePopUp = "closeAddWindow" @validation_check="AddWebsiteTracker" ref='add_window'>
 
@@ -10,7 +11,6 @@
             
             <side-bar @addTracker="add_tracker_window = true">
             </side-bar>
-            <ToolsTicker :options="['light-mode', 'dark-mode']" v-model="style_theme"></ToolsTicker>
             <info-pannel>
 
             </info-pannel>

@@ -12,8 +12,8 @@
             v-on:focus="small_add = true"
             v-on:blur="small_add = false"
             type="search"
-            :placeholder="'🔍Search'">
-
+            :placeholder="'🔍Search'"
+            class="search-input">
         </ToolsInputField>
     </div>
     
@@ -22,6 +22,7 @@
             {{ tracker['name'] }}
         </div>
     </div>
+    <ToolsTicker :options="['light-mode', 'dark-mode']" v-model="style_theme"></ToolsTicker>
 </div>
 
 </template>
@@ -94,18 +95,12 @@ export default {
     gap: 0px
 
 .search-input
-    background-color: $grey-1
-    outline: none
-    border: none
-    border-radius: 5px
-    padding: 10px
     padding-right: 0px
-    color: white
-    width: 100%
 
 
 .search-input:focus
-    outline: thin solid $blue-2  
+    outline: thin solid $blue-2
+    padding-right: 10px
 
 .add-button
     width: 100%

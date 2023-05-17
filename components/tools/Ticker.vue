@@ -72,6 +72,7 @@ export default {
     box-sizing: border-box
     border-radius: 25px
     max-height: calc( 45px * 0.625)
+
 .full-width.light-mode
     background-color: $grey-7
 
@@ -81,16 +82,18 @@ export default {
 .precentage
     background-color: $blue-1
     height: 28.125px
-    position: absolute
     max-width: 45px
     border-radius: 25px
     transition: 0.2s
+    position: absolute
+    z-index: 1
 
 .node
     height: 28.125px
     aspect-ratio: 1/1
     border-radius: 45px
     background-color: white
-    position: relative
     transition: 0.2s
+    position: relative
+    z-index: 1
 </style>
