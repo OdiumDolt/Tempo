@@ -5,8 +5,12 @@
 </template>
 
 <script lang="ts">
-export default {
-    props:["style_theme"]
+export default {    
+    data(){
+        return {
+            style_theme: useTheme()
+        }
+    }
     
 
 }

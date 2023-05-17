@@ -5,8 +5,7 @@
         <div class="container-top" :class="[style_theme]">
             <ToolsInputField 
             
-                v-model="url" 
-                :style_theme="style_theme" 
+                v-model="url"
                 :placeholder="placeholderText">
             
             </ToolsInputField>
@@ -15,7 +14,6 @@
             
                 class="slider" 
                 color="#1b4bcc" 
-                :style_theme="style_theme" 
                 v-model="interval">
             
             </ToolsSlider>
@@ -45,7 +43,6 @@
 
 <script lang="ts">
 export default{
-    props:["style_theme"],
     
     data(){
         var interval = setInterval(async () => {this.iteratePlaceHolder()}, 1000)
@@ -56,7 +53,8 @@ export default{
             validation:false,
             is_itterating:false,
             text_interval: interval,
-            url:""
+            url:"",
+            style_theme: useTheme()
         }
     },
 
@@ -74,7 +72,6 @@ export default{
             }
         },
         async iteratePlaceHolder(){
-            console.log('gaming')
             if (!this.is_itterating){
             
                 this.is_itterating = true
@@ -155,7 +152,6 @@ export default{
     background-color: $grey-8
     border: thin solid $grey-7
 
-
 .container-bottom
     border-bottom-left-radius: 5px
     border-bottom-right-radius: 5px
@@ -170,6 +166,10 @@ export default{
 .container-bottom.light-mode
     background-color: $grey-8
     border: thin solid $grey-7
+
+.container-bottom.dark-mode
+    background-color: $grey-1
+    border: thin solid $grey-2
 
 .flashing-dots
     width: 45px

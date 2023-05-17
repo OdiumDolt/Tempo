@@ -5,11 +5,12 @@
 <script lang="ts">
 
 export default {
-    props:['modelValue', 'style_theme', 'placeholder'],
+    props:['modelValue', 'placeholder'],
     emits:['update:modelValue'],
     data(){
         return {
-            model_val:this.modelValue
+            model_val:this.modelValue,
+            style_theme: useTheme()
         }
     },
     watch:{

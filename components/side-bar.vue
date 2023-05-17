@@ -9,11 +9,10 @@
             Add Tracker
         </ToolsButton>
         <ToolsInputField 
-        :style_theme="style_theme"
-        v-on:focus="small_add = true"
-        v-on:blur="small_add = false"
-        type="search"
-        :placeholder="'🔍Search'">
+            v-on:focus="small_add = true"
+            v-on:blur="small_add = false"
+            type="search"
+            :placeholder="'🔍Search'">
 
         </ToolsInputField>
     </div>
@@ -23,7 +22,6 @@
             {{ tracker['name'] }}
         </div>
     </div>
-    <ToolsTicker :style_theme="style_theme"></ToolsTicker>
 </div>
 
 </template>
@@ -31,11 +29,11 @@
 <script lang="ts">
 
 export default {
-    props:['style_theme'],
     data(){
         return {
             web_trackers: useState("web_trackers"),
-            small_add: false
+            small_add: false,
+            style_theme: useTheme()
         }
     },
     methods:{
@@ -72,7 +70,6 @@ export default {
     color: black
     background-color: $grey-7
     border: thin solid $grey-7
-    font-size: 20px
 
 .tracker-items
     overflow-y: scroll

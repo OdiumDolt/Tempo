@@ -25,13 +25,14 @@
 <script lang="ts">
 
 export default {
-    props:["slider_start", 'slider_end', 'color', "style_theme", "modelValue", "iterables"],
+    props:["slider_start", 'slider_end', 'color', "modelValue", "iterables"],
     emits: ['update:modelValue'],
     data(){
         return {
             is_node_clicked: false,
             mouse_pos: 0,
-            slider_precent: this.modelValue
+            slider_precent: this.modelValue,
+            style_theme: useTheme()
         }
     },
     methods:{

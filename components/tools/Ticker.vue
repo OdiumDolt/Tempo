@@ -9,17 +9,25 @@
 
 <script lang="ts">
 export default {
-    props:['style_theme', "modelValue"],
+    props:["modelValue", "options"],
     emits:["update:modelValue"],
     data(){
+        const starting_index = this.options.indexOf(this.modelValue)
         return {
-            model: this.modelValue,
+            model: starting_index,
+            dual_options: this.options,
+            style_theme: useTheme()
         }
     },
     methods:{
         switch_model(){
-            this.model = !this.model
-            this.$emit('update:modelValue', this.model)
+            if (this.model == 1){
+                this.model = 0
+            }
+            else{
+                this.model = 1
+            }
+            this.$emit('update:modelValue', this.options[this.model])
         }
 
     },
@@ -63,7 +71,7 @@ export default {
     aspect-ratio: 2/1.25
     box-sizing: border-box
     border-radius: 25px
-
+    max-height: calc( 45px * 0.625)
 .full-width.light-mode
     background-color: $grey-7
 

@@ -8,10 +8,10 @@
         
         <div class="dashboard-container">
             
-            <side-bar @addTracker="add_tracker_window = true" :style_theme="style_theme">
+            <side-bar @addTracker="add_tracker_window = true">
             </side-bar>
-            
-            <info-pannel :style_theme="style_theme">
+            <ToolsTicker :options="['light-mode', 'dark-mode']" v-model="style_theme"></ToolsTicker>
+            <info-pannel>
 
             </info-pannel>
         </div>
@@ -28,7 +28,7 @@ export default {
             user: useSupabaseUser(),
             client: useSupabaseClient(),
             add_tracker_window: false,
-            style_theme: "light-mode",
+            style_theme: useTheme(),
             trackers: []
 
         };

@@ -11,9 +11,10 @@
 
 <script lang="ts">
 export default {
-    props:['style_theme', 'theme'],
+    props:['theme'],
     data(){
         return {
+            style_theme: useTheme()
         }
     },
     computed:{
@@ -54,8 +55,9 @@ button.cancel.dark-mode
     background-color: $grey-2
     border: $grey-3 thin solid
 
-button.cancel.dark-model:hover
-    border-color: $grey-4
+button.cancel.dark-mode:hover
+    border-color: $grey-2
+    color: $grey-4
 
 button.cancel.light-mode
     color: $grey-3
