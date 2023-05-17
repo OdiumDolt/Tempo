@@ -97,7 +97,6 @@ export default {
 .search-input
     padding-right: 0px
 
-
 .search-input:focus
     outline: thin solid $blue-2
     padding-right: 10px

@@ -6,8 +6,8 @@
             <ToolsInputField 
             
                 v-model="url"
-                :placeholder="placeholderText">
-            
+                :placeholder="placeholderText"
+                class="search-input">
             </ToolsInputField>
             
             <ToolsSlider 
@@ -178,5 +178,7 @@ export default{
     display: flex
     height: 15px
 
-
+.search-input:focus
+    outline: thin solid $blue-2
+    padding-right: 10px
 </style>
