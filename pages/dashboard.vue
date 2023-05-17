@@ -45,6 +45,9 @@ export default {
     },
     async mounted() {
         // if there is no user_id, try to creat one
+        var defualt_theme = localStorage.getItem('style_theme')
+        this.style_theme = (defualt_theme == null ? 'dark-mode' : defualt_theme)
+
         if (this.user == null) {
             window.location.href = "/login";
         }
@@ -62,6 +65,11 @@ export default {
         window.addEventListener("mousemove", mouse_move_func, false)
         window.addEventListener("mouseup", mouse_up_func, false)
     },
+    watch:{
+        style_theme(){
+            localStorage.setItem('style_theme', this.style_theme)
+        }
+    }
 }
 </script>
 
