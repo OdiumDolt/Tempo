@@ -14,8 +14,8 @@
             
                 class="slider" 
                 color="#1b4bcc" 
-                v-model="interval"
-                :iterables='["30s", "1m", "5m", "10m", "30m", "1hr"]'
+                v-model="ping_interval"
+                :iterables=slider_interables
                 >
             
             </ToolsSlider>
@@ -28,7 +28,7 @@
                 Cancel
             </ToolsButton>
             
-            <ToolsButton :theme="'blue-select'" class="buttons" @click="validation = !validation">
+            <ToolsButton :theme="'blue-select'" class="buttons" @click="addTracker">
                 <div v-if="!validation">
                     Apply Tracker
                 </div>
@@ -48,15 +48,22 @@ export default{
     
     data(){
         var interval = setInterval(async () => {this.iteratePlaceHolder()}, 1000)
+        
         return {
             placeholderText: "",
+            slider_interables: ['30 s', '1 min', '5 min', '10 min', '30 min', '1 hr'],
+            min_time: 30,
+            max_time: 3600,
             websites: list_of_websites,
-            interval:0,
+            ping_interval: '30s',
             validation:false,
             is_itterating:false,
-            text_interval: interval,
+            text_animation_interval: interval,
             url:"",
-            style_theme: useTheme()
+            style_theme: useTheme(),
+
+            // user: useSupabaseUser(),
+            // client: useSupabaseClient(),
         }
     },
 
@@ -93,6 +100,32 @@ export default{
 
         },
 
+        async addTracker(){
+            this.validation = !this.validation
+            if (this.slider_interables.includes(this.ping_interval)){
+                var time = get_time_in_int(this.ping_interval)
+            }
+            else{
+                console.log('something has gone wrong')
+                return                
+            }
+
+            if (this.user != null){
+                var new_tracker: Tracker = {
+                    url: this.url,
+                    user_id: this.user.id,
+                    active: true,
+                    history: [],
+                    interval: time
+                }
+                if (this.user != null){
+                    add_tracker_database(this.user, this.client, new_tracker).then(res => {
+                        console.log(res)
+                    })
+                }  
+            }
+        },
+
         // thanks stackoverflow
         shuffle(array:any){
             let currentIndex = array.length,  randomIndex;
@@ -112,13 +145,14 @@ export default{
             return array;
         },
         $destroy(){
-            clearInterval(this.text_interval)
+            clearInterval(this.text_animation_interval)
         }
     },
     mounted(){
 
     },
     watch:{
+
     }
 
 }
