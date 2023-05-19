@@ -62,8 +62,8 @@ export default{
             url:"",
             style_theme: useTheme(),
 
-            // user: useSupabaseUser(),
-            // client: useSupabaseClient(),
+            user: useTracker(),
+            client: useTracker()
         }
     },
 
@@ -101,28 +101,33 @@ export default{
         },
 
         async addTracker(){
-            this.validation = !this.validation
-            if (this.slider_interables.includes(this.ping_interval)){
-                var time = get_time_in_int(this.ping_interval)
-            }
-            else{
-                console.log('something has gone wrong')
-                return                
-            }
-
-            if (this.user != null){
-                var new_tracker: Tracker = {
-                    url: this.url,
-                    user_id: this.user.id,
-                    active: true,
-                    history: [],
-                    interval: time
+            if (this.validation != true){
+                this.validation = true
+                await new Promise(resolve => setTimeout(resolve, 500));
+                if (this.slider_interables.includes(this.ping_interval)){
+                    var time = get_time_in_int(this.ping_interval)
                 }
+                else{
+                    console.log('something has gone wrong')
+                    return                
+                }
+
                 if (this.user != null){
-                    add_tracker_database(this.user, this.client, new_tracker).then(res => {
-                        console.log(res)
-                    })
-                }  
+                    var new_tracker: Tracker = {
+                        url: this.url,
+                        user_id: this.user.id,
+                        active: true,
+                        history: [],
+                        interval: time,
+                        name: this.url
+                    }
+                    if (this.user != null){
+                        add_tracker_database(this.user, this.client, new_tracker).then(res => {
+                            this.validation = false
+                            this.$emit('closePopUp')
+                        })
+                    }  
+                }
             }
         },
 

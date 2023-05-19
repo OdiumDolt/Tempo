@@ -5,7 +5,7 @@ async function get_user_trackers(client:any, user:any) {
     
     while (i < 10){
 
-        var { data, error }: {data: any, error:any | null} = await client.from("userTrackingData").select("website_trackers").eq("user_id", user.id).single()
+        var { data, error }: {data: any, error:any | null} = await client.from("userTrackingData").select("trackers").eq("user_id", user.id).single()
 
         // create a new table in userTrackingData if the user doesnt have one currently
         if (error?.code == "PGRST116"){
@@ -28,8 +28,10 @@ async function get_user_trackers(client:any, user:any) {
     throw new Error("Not able to get userTrackingData")
 }
 
-async function add_tracker_database(user:any, client:any, trackers:Tracker){
-    await client.from('userTrackingData').from(user.id).insert([trackers])
+async function add_tracker_database(user:any, client:any, tracker:Tracker){
+    let current_trackers = useTracker()
+    current_trackers.value.push(tracker)
+    await client.from('userTrackingData').update({'trackers': current_trackers.value}).eq("user_id", user.id)
 }
 
 export {
