@@ -14,7 +14,9 @@
             
                 class="slider" 
                 color="#1b4bcc" 
-                v-model="interval">
+                v-model="interval"
+                :iterables='["30s", "1m", "5m", "10m", "30m", "1hr"]'
+                >
             
             </ToolsSlider>
         </div>
@@ -167,4 +169,4 @@ export default{
     padding-right: 10px
 </style>
 
-<style src="@/assets/styles/themes/website-html/AddWindow.sass" lang="sass" scoped></style>
+<style src="@/assets/styles/themes/addTracker/Window.sass" lang="sass" scoped></style>

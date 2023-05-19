@@ -28,9 +28,10 @@ export default {
     props:["slider_start", 'slider_end', 'color', "modelValue", "iterables"],
     emits: ['update:modelValue'],
     data(){
+        var full_bar_length = document.getElementById("bar-container")?.offsetWidth
+        console.log(full_bar_length)
         return {
             is_node_clicked: false,
-            mouse_pos: 0,
             slider_precent: this.modelValue,
             style_theme: useTheme()
         }
@@ -49,8 +50,12 @@ export default {
                     var y = e.clientY - rect.top;
 
                     if ((x/target.offsetWidth * 100) < 100 && (x/target.offsetWidth * 100) > 0){
-                        
-                        this.slider_precent = x/target.offsetWidth * 100
+                        if (this.iterables != null){
+                             
+                        }
+                        else{
+                            this.slider_precent = x/target.offsetWidth * 100
+                        }
                     }
                     else if ((x/target.offsetWidth * 100) > 100){
                         this.slider_precent = 100
@@ -144,6 +149,7 @@ export default {
     font-size: 0.8em
     user-select: none
     text-align: center
+    width: 30px
 </style>
 
 <style scoped lang="sass" src="@/assets/styles/themes/tools/Slider.sass"></style>
