@@ -9,9 +9,8 @@ interface capture {
 interface Tracker {
     url: string,
     interval: number,
-    history: capture[],
     user_id: string,
-    id:string,  
+    history_id:string,
     active: boolean,
     name: string,
 }

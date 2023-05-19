@@ -44,6 +44,7 @@
 </template>
 
 <script lang="ts">
+import {v4 as uuidv4} from 'uuid';
 export default{
     
     data(){
@@ -117,9 +118,9 @@ export default{
                         url: this.url,
                         user_id: this.user.id,
                         active: true,
-                        history: [],
+                        history_id: uuidv4(),
                         interval: time,
-                        name: this.url
+                        name: this.url,
                     }
                     if (this.user != null){
                         add_tracker_database(this.user, this.client, new_tracker).then(res => {
