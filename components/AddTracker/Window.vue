@@ -62,8 +62,8 @@ export default{
             url:"",
             style_theme: useTheme(),
 
-            user: useTracker(),
-            client: useTracker()
+            user: useSupabaseUser(),
+            client: useSupabaseClient()
         }
     },
 
