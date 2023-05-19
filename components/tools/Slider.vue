@@ -61,7 +61,15 @@ export default {
                                 return (Math.abs(curr.value - e.clientX) < Math.abs(prev.value - e.clientX) ? curr : prev);
                             });
                             this.$emit("update:modelValue", closest.id)
-                            this.slider_precent = (closest.value - rect.left + 8) + "px"
+                            let el = document.getElementById('iterable_' + closest.id)
+                            if (el != null){
+                                let offset = el.clientWidth/2 - 5
+                                this.slider_precent = (closest.value - rect.left + offset) + "px"
+                            }
+                            else{
+                                this.slider_precent = (closest.value - rect.left + 10) + "px"
+                            }
+                            
                     }
                     else if ((x/target.offsetWidth * 100) < 100 && (x/target.offsetWidth * 100) > 0){
                         this.$emit("update:modelValue", x/target.offsetWidth * 100)
@@ -182,7 +190,7 @@ export default {
     font-size: 0.8em
     user-select: none
     text-align: center
-    width: 30px
+    width: 40px
 </style>
 
 <style scoped lang="sass" src="@/assets/styles/themes/tools/Slider.sass"></style>
