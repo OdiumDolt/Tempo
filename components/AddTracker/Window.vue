@@ -49,7 +49,7 @@ export default{
         return {
             placeholderText: "",
             websites: list_of_websites,
-            interval:100,
+            interval:0,
             validation:false,
             is_itterating:false,
             text_interval: interval,
