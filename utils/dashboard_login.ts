@@ -28,9 +28,13 @@ async function get_user_trackers(client:any, user:any) {
     throw new Error("Not able to get userTrackingData")
 }
 
+async function get_tracker_history(client:any, user:any, tracker:Tracker) {
+    await client.from('trackers').select('history').eq('id', tracker.id)
+}
+
 async function add_tracker_database(user:any, client:any, tracker:Tracker){
     let current_trackers = useTracker()
-    current_trackers.value.push(tracker)
+    current_trackers.value.unshift(tracker)
     await client.from('userTrackingData').update({'trackers': current_trackers.value}).eq("user_id", user.id)
 }
 

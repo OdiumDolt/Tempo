@@ -56,14 +56,15 @@ export default {
                 //     this.trackers.push(element)
                 // });
                 
-                for (let i = 0; i < Math.floor(Math.random() * 6) + 4; i++){
+                for (let i = 0; i < Math.floor(Math.random() * 10) + 10; i++){
 
                     var tracker_history: capture[] = []
                     var tracker_date = faker.date.past()
+                    var history_id = faker.string.uuid()
                     for(let i = 0; i < Math.floor(Math.random() * 20) + 15; i++){
                         tracker_history.push({
                             'date':faker.date.past({refDate:tracker_date}),
-                            'id': faker.string.uuid(),
+                            'id': history_id,
                             'index': i,
                             'status': faker.internet.httpStatusCode(),
                             'graph_satus': faker.number.int({min: 0, max:4})
@@ -77,7 +78,8 @@ export default {
                             'interval':faker.number.int({'max': 3600, 'min': 30}),
                             'user_id':faker.string.uuid(),
                             'active':faker.datatype.boolean(),
-                            'history': tracker_history
+                            'history': tracker_history,
+                            'id': history_id
                         }
                     )
                 }

@@ -57,6 +57,7 @@ export default {
     // height: 100px
     min-width: 175px
     width: 20%
+    flex-shrink: 0
 
 .side-bar-item
     padding: 10px
@@ -64,7 +65,8 @@ export default {
     aspect-ratio: 3/1
     min-height: 80px
     box-sizing: border-box
-    font-family: 'Reem Kufi Fun', sans-serif
+    font-family: 'Reem Kufi Fun', sans-seriff
+    flex-shrink: 0
 
 .tracker-items
     overflow-y: scroll

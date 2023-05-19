@@ -11,6 +11,7 @@ interface Tracker {
     interval: number,
     history: capture[],
     user_id: string,
+    id:string,  
     active: boolean,
     name: string,
 }
