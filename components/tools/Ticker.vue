@@ -71,7 +71,7 @@ export default {
 
 
 <style scoped lang="sass">
-@import '@/assets/styles/colors.sass'
+@import '@/assets/styles/public/colors.sass'
 .full-width
     width: 45px
     aspect-ratio: 2/1.25

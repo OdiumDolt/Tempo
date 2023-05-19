@@ -61,7 +61,7 @@ export default {
 
 <style scoped lang="sass">
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap')
-@import '@/assets/styles/colors.sass'
+@import '@/assets/styles/public/colors.sass'
 
 .window-container
     height: 100vh

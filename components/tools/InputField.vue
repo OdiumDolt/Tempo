@@ -23,8 +23,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import '@/assets/styles/colors.sass'
-@import '@/assets/styles/fonts.sass'
+@import '@/assets/styles/public/colors.sass'
+@import '@/assets/styles/public/fonts.sass'
 
 
 

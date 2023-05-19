@@ -74,7 +74,7 @@ export default {
 </script>
 
 <style lang="sass">
-@import '@/assets/styles/colors.sass'
+@import '@/assets/styles/public/colors.sass'
 
 .dashboard-container
     display: flex

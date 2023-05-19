@@ -25,8 +25,8 @@ export default {
 </script>
 
 <style scoped lang="sass">
-@import '@/assets/styles/colors.sass'
-@import '@/assets/styles/fonts.sass'
+@import '@/assets/styles/public/colors.sass'
+@import '@/assets/styles/public/fonts.sass'
 
 button
     all: unset

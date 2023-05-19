@@ -123,9 +123,9 @@ export default{
 </script>
 
 <style scoped lang="sass">
-@import '@/assets/styles/colors.sass'
-@import '@/assets/styles/fonts.sass'
-@import '@/assets/styles/animations.sass'
+@import '@/assets/styles/public/colors.sass'
+@import '@/assets/styles/public/fonts.sass'
+@import '@/assets/styles/public/animations.sass'
 
 .add-new-tracker-container
     display: flex
