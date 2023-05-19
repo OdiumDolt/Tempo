@@ -106,7 +106,7 @@ export default {
                 if (target != null){
                     var rect = target.getBoundingClientRect();
                     this.slider_precent = (this.iterable_pos[0].value - rect.left + 8) + "px"
-                    this.$emit('update:modelValue', this.iterable_pos[0])
+                    this.$emit('update:modelValue', this.iterable_pos[0].id)
                 }
             }
         }
