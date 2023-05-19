@@ -61,7 +61,7 @@ export default {
 .side-bar-item
     padding: 10px
     border-radius: 5px
-    aspect-ratio: 2.5/1
+    aspect-ratio: 3/1
     min-height: 80px
     box-sizing: border-box
     font-family: 'Reem Kufi Fun', sans-serif
