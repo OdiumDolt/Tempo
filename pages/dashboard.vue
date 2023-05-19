@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-
+import { faker } from '@faker-js/faker';
 
 export default {
     data() {
@@ -39,9 +39,6 @@ export default {
             (this.$refs.add_window as any).$destroy()
             this.add_tracker_window = false
         },
-        AddWebsiteTracker(website_data: Tracker){
-            // add_tracker(this.user, this.client, )
-        }
 
     },
     async mounted() {
@@ -55,10 +52,37 @@ export default {
         var data = get_user_trackers(this.client, this.user)
             .then(data => {
                 
-                data['trackers'].forEach((element:Tracker) => {
-                    this.trackers.push(element)
-                });
+                // data['trackers'].forEach((element:Tracker) => {
+                //     this.trackers.push(element)
+                // });
                 
+                for (let i = 0; i < Math.floor(Math.random() * 6) + 4; i++){
+
+                    var tracker_history: capture[] = []
+                    var tracker_date = faker.date.past()
+                    for(let i = 0; i < Math.floor(Math.random() * 20) + 15; i++){
+                        tracker_history.push({
+                            'date':faker.date.past({refDate:tracker_date}),
+                            'id': faker.string.uuid(),
+                            'index': i,
+                            'status': faker.internet.httpStatusCode(),
+                            'graph_satus': faker.number.int({min: 0, max:4})
+                        })
+                    }
+
+                    this.trackers.push(
+                        {
+                            'url':faker.internet.url(),
+                            'name':faker.internet.domainName(),
+                            'interval':faker.number.int({'max': 3600, 'min': 30}),
+                            'user_id':faker.string.uuid(),
+                            'active':faker.datatype.boolean(),
+                            'history': tracker_history
+                        }
+                    )
+                }
+                
+
                 useState('supauser', () => this.user)
                 useState('supaclient', () => this.client)
         })
