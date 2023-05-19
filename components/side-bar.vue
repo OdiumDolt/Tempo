@@ -32,7 +32,7 @@
 export default {
     data(){
         return {
-            web_trackers: useState("web_trackers"),
+            web_trackers: useTracker(),
             small_add: false,
             style_theme: useTheme()
         }
@@ -54,12 +54,15 @@ export default {
     flex-direction: column
     gap: 20px
     box-sizing: border-box
+    // height: 100px
+    min-width: 175px
     width: 20%
 
 .side-bar-item
     padding: 10px
     border-radius: 5px
-    height: 86px
+    aspect-ratio: 2.5/1
+    min-height: 80px
     box-sizing: border-box
     font-family: 'Reem Kufi Fun', sans-serif
 
