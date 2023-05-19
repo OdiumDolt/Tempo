@@ -26,8 +26,6 @@ export default {
 @import '@/assets/styles/public/colors.sass'
 @import '@/assets/styles/public/fonts.sass'
 
-
-
 input
     outline: none
     border: none
@@ -36,12 +34,6 @@ input
     width: 100%
     box-sizing: border-box
     font-family: 'Reem Kufi Fun', sans-serif
-
-input.dark-mode
-    background-color: $grey-2
-    color: white
-
-input.light-mode
-    background-color: $grey-7
-    color: black
 </style>
+
+<style src="@/assets/styles/themes/tools/InputField.sass" lang="sass" scoped></style>

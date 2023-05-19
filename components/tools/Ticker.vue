@@ -79,12 +79,6 @@ export default {
     border-radius: 25px
     max-height: calc( 45px * 0.625)
 
-.full-width.light-mode
-    background-color: $grey-7
-
-.full-width.dark-mode
-    background-color: $grey-3
-
 .precentage
     background-color: $blue-1
     height: 28.125px
@@ -103,3 +97,5 @@ export default {
     position: relative
     z-index: 1
 </style>
+
+<style src="@/assets/styles/themes/tools/Ticker.sass" lang="sass" scoped></style>

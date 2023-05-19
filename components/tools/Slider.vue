@@ -104,7 +104,6 @@ export default {
     height: 20px
     position: relative
     user-select: none
-
 .full-bar
     user-select: none
     width: 100%
@@ -114,12 +113,6 @@ export default {
     margin: auto
     top: 50%
     transform: translateY(-50%)
-
-.full-bar.light-mode
-    background-color: #c9c9c9
-
-.full-bar.dark-mode
-    background-color: #2c2c2e
 
 .precent
     border-radius: 5px
@@ -142,21 +135,15 @@ export default {
     border-radius: 10px
     user-select: none
 
-.node.light-mode
-    border: thin solid $black
-
 .number-spacers-container
     display: flex
     justify-content: space-between
-
-.number-spacers.dark-mode
-    color: white
 
 .number-spacers
     font-family: "Roboto", sans-serif
     font-size: 0.8em
     user-select: none
     text-align: center
-
-
 </style>
+
+<style scoped lang="sass" src="@/assets/styles/themes/tools/Slider.sass"></style>

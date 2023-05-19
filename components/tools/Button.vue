@@ -43,29 +43,6 @@ button.blue-select
     border: thin $blue-2 solid
     transition: box-shadow 0.2s, border-color 0.3s
 
-button.blue-select:hover
-    box-shadow:0px 0px 17px $blue-1
-    border-color: $blue-1
-
-button.cancel
-    transition: 0.1s linear
-    
-button.cancel.dark-mode
-    color: $grey-5
-    background-color: $grey-2
-    border: $grey-3 thin solid
-
-button.cancel.dark-mode:hover
-    border-color: $grey-2
-    color: $grey-4
-
-button.cancel.light-mode
-    color: $grey-3
-    background-color: $grey-7
-    border: $grey-6 thin solid
-
-button.cancel.light-mode:hover
-    border-color: $grey-1
-    color: $black
-
 </style>
+
+<style src="@/assets/styles/themes/tools/Button.sass" lang="sass" scoped></style>

@@ -63,15 +63,6 @@ export default {
     box-sizing: border-box
     font-family: 'Reem Kufi Fun', sans-serif
 
-.side-bar-item.dark-mode
-    background-color: $grey-1
-    color: white
-
-.side-bar-item.light-mode
-    color: black
-    background-color: $grey-7
-    border: thin solid $grey-7
-
 .tracker-items
     overflow-y: scroll
     display: flex
@@ -115,3 +106,5 @@ export default {
     opacity: 0
     display: hidden
 </style>
+
+<style scoped lang="sass" src="@/assets/styles/themes/side-bar.sass"></style>

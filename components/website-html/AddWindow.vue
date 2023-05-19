@@ -144,14 +144,6 @@ export default{
     flex-direction: column
     gap: 20px
 
-.container-top.dark-mode
-    background-color: $grey-1
-    border: thin solid $grey-2
-
-.container-top.light-mode
-    background-color: $grey-8
-    border: thin solid $grey-7
-
 .container-bottom
     border-bottom-left-radius: 5px
     border-bottom-right-radius: 5px
@@ -162,14 +154,6 @@ export default{
     align-items: center
     padding-right: 10px
     gap: 10px
-
-.container-bottom.light-mode
-    background-color: $grey-8
-    border: thin solid $grey-7
-
-.container-bottom.dark-mode
-    background-color: $grey-1
-    border: thin solid $grey-2
 
 .flashing-dots
     width: 45px
@@ -182,3 +166,5 @@ export default{
     outline: thin solid $blue-2
     padding-right: 10px
 </style>
+
+<style src="@/assets/styles/themes/website-html/AddWindow.sass" lang="sass" scoped></style>
