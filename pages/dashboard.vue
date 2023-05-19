@@ -10,6 +10,7 @@
         <div class="dashboard-container">
             
             <side-bar @addTracker="add_tracker_window = true">
+            
             </side-bar>
             <info-pannel>
 
@@ -29,7 +30,7 @@ export default {
             client: useSupabaseClient(),
             add_tracker_window: false,
             style_theme: useTheme(),
-            trackers: []
+            trackers: useTracker()
 
         };
     },
@@ -53,8 +54,13 @@ export default {
         }
         var data = get_user_trackers(this.client, this.user)
             .then(data => {
-            this.trackers = data['website_trackers']
-            useState("web_trackers", () => this.trackers);
+                
+                data['trackers'].forEach((element:Tracker) => {
+                    this.trackers.push(element)
+                });
+                
+                useState('supauser', () => this.user)
+                useState('supaclient', () => this.client)
         })
             .catch(error => {
             console.error(error);

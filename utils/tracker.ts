@@ -12,6 +12,7 @@ interface Tracker {
     history: capture[],
     user_id: string,
     active: boolean,
+    name: string,
 }
 
 class UserTrackers {
