@@ -15,8 +15,8 @@
         </div>
     </div>
     <div class="number-spacers-container">
-        <div v-for="num in iterables" class="number-spacers" :class="[style_theme]">
-            {{ num }}
+        <div v-for="(value, name, index) in iterables" class="number-spacers" :class="[style_theme]" :id="'iterable_' + value">
+            {{ value }}
         </div>
     </div>
 </div>
@@ -24,16 +24,22 @@
 
 <script lang="ts">
 
+
+interface pos_it {
+    id: string
+    value: number
+}
+
 export default {
     props:["slider_start", 'slider_end', 'color', "modelValue", "iterables"],
     emits: ['update:modelValue'],
     data(){
-        var full_bar_length = document.getElementById("bar-container")?.offsetWidth
-        console.log(full_bar_length)
+        
         return {
             is_node_clicked: false,
             slider_precent: this.modelValue,
-            style_theme: useTheme()
+            style_theme: useTheme(),
+            iterable_pos: [] as pos_it[]
         }
     },
     methods:{
@@ -49,21 +55,27 @@ export default {
                     var x = e.clientX - rect.left; 
                     var y = e.clientY - rect.top;
 
-                    if ((x/target.offsetWidth * 100) < 100 && (x/target.offsetWidth * 100) > 0){
-                        if (this.iterables != null){
-                             
-                        }
-                        else{
-                            this.slider_precent = x/target.offsetWidth * 100
-                        }
+                    if (this.iterable_pos.length > 0){
+
+                            let closest = this.iterable_pos.reduce(function(prev, curr) {
+                                return (Math.abs(curr.value - e.clientX) < Math.abs(prev.value - e.clientX) ? curr : prev);
+                            });
+                            this.$emit("update:modelValue", closest.id)
+                            this.slider_precent = (closest.value - rect.left + 8) + "px"
+                    }
+                    else if ((x/target.offsetWidth * 100) < 100 && (x/target.offsetWidth * 100) > 0){
+                        this.$emit("update:modelValue", x/target.offsetWidth * 100)
+                        this.slider_precent = x/target.offsetWidth * 100 + "%"
                     }
                     else if ((x/target.offsetWidth * 100) > 100){
-                        this.slider_precent = 100
+                        this.$emit("update:modelValue", 100)
+                        this.slider_precent = 100 + "%"
                     }
                     else if ((x/target.offsetWidth * 100) < 0){
-                        this.slider_precent = 0
+                        this.$emit("update:modelValue", 0)
+                        this.slider_precent = 0 + "%"
                     }
-                    this.$emit("update:modelValue", this.slider_precent)
+
                 }
 
             }
@@ -75,20 +87,41 @@ export default {
 
     },
     mounted(){
-        for(let i = 0; i < 100; i++){
-            mouse_listeners.mouse_move["slider_" + i.toString()]= this.mouse_move
-            mouse_listeners.mouse_up["slider_" + i.toString()] = this.is_node
+        mouse_listeners.mouse_move["slider_move"] = this.mouse_move
+        mouse_listeners.mouse_up["slider_click"] = this.is_node
+        try{
+            if (this.iterables.length){
+                
+                for(let id in this.iterables){
+                    let el = document.getElementById("iterable_" + this.iterables[id])
+                    if (el != null){
+                        this.iterable_pos.push({
+                            id:this.iterables[id],
+                            value: el.offsetLeft
+                        })
+                    }
+                }
+
+                var target = document.getElementById("bar-container")
+                if (target != null){
+                    var rect = target.getBoundingClientRect();
+                    this.slider_precent = (this.iterable_pos[0].value - rect.left + 8) + "px"
+                    this.$emit('update:modelValue', this.iterable_pos[0])
+                }
+            }
         }
+        catch{}
+
     },
     computed: {
         precent(){
             return {
-                'width': this.slider_precent + "%"
+                'width': this.slider_precent
             }
         },
         margin(){
             return {
-                'margin-left': this.slider_precent + "%"
+                'margin-left': this.slider_precent
             }
         },
         sliderColor(){
