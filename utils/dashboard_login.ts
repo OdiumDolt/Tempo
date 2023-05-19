@@ -28,11 +28,11 @@ async function get_user_trackers(client:any, user:any) {
     throw new Error("Not able to get userTrackingData")
 }
 
-async function add_tracker(user:any, client:any, trackers:Tracker[]){
+async function add_tracker_database(user:any, client:any, trackers:Tracker){
     await client.from('userTrackingData').from(user.id).insert([trackers])
 }
 
 export {
     get_user_trackers,
-    add_tracker
+    add_tracker_database
 }
