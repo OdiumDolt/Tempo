@@ -10,7 +10,7 @@ interface Tracker {
     url: string,
     interval: number,
     user_id: string,
-    history_id:string,
+    id: string
     active: boolean,
     name: string,
 }
