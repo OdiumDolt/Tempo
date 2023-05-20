@@ -21,8 +21,6 @@
 </template>
 
 <script lang="ts">
-import { faker } from '@faker-js/faker';
-
 export default {
     data() {
         return {
@@ -49,21 +47,19 @@ export default {
         if (this.user == null) {
             window.location.href = "/login";
         }
+
         var data = get_user_trackers(this.client, this.user)
             .then(data => {
-                
-                data['trackers'].forEach((element:Tracker) => {
-                    this.trackers.push(element)
-                });
-                
+                this.trackers = data
 
                 useState('supauser', () => this.user)
                 useState('supaclient', () => this.client)
-        })
+            })
             .catch(error => {
-            console.error(error);
-        });
-        // TODO, currently assumes that creating a new row for user_id worked
+                console.error(error);
+            });
+        
+            // TODO, currently assumes that creating a new row for user_id worked
         // TODO, currently assumes that a user exists, should redirect back to /login if not.
 
         window.addEventListener("mousemove", mouse_move_func, false)
