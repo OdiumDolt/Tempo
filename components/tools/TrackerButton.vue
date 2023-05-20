@@ -11,6 +11,12 @@ export default {
             style_theme: useTheme()
         }
     },
+    methods:{
+        test(e:any){
+            console.log(e.target.value)
+        }
+    }
+
 
 }
 
@@ -18,8 +24,10 @@ export default {
 
 <template>
 <div :class="[style_theme]" class="button-container">
-    <div :class="[style_theme]" class="button-text large" contenteditable>{{ tracker.name }}</div>
-    <div :class="[style_theme]" class="button-text small">{{ tracker.url }}</div>
+    <textarea :class="[style_theme]" class="button-text large" contenteditable maxlength = "20" @keydown.enter="test" v-if="tracker.name.length < 17">{{ tracker.name }}</textarea>
+    <textarea :class="[style_theme]" class="button-text large" contenteditable maxlength = "20" @keydown.enter="test" v-else>{{ tracker.name.substring(0,17) + "..." }}</textarea>
+    <div :class="[style_theme]" class="button-text small" v-if="tracker.url.length < 20">{{ tracker.url }}</div>
+    <div v-else :class="[style_theme]" class="button-text small">{{ tracker.url.substring(0,20) + "..." }}</div>
 </div>
 </template>
 
@@ -35,8 +43,16 @@ export default {
     display: flex
     flex-direction: column
     gap: 5px
+    overflow: hidden
+.button-container::-webkit-scrollbar
+    display: none
+
 .button-text
+    all: unset
     font-family: 'Reem Kufi Fun', sans-serif
+    overflow: hidden
+    height: 30px
+    width: fit-content
 
 .button-text.large
     font-size: 20px
