@@ -4,7 +4,7 @@
 async function get_user_trackers(client:any, user:any) {
 
     var { data, error }: {data: Tracker[], error:any | null} = await client.from("trackers").select().eq('user_id', user.id)
-    
+    console.log(await get_tracker_history(client, user, data[0]))
     if (error != null){
         throw new Error(error)
     }
@@ -12,16 +12,17 @@ async function get_user_trackers(client:any, user:any) {
         
 }
 
-// async function get_tracker_history(client:any, user:any, tracker:Tracker) {
-//     await client.from('trackers').select('history').eq('id', tracker.history_id)[tracker.history_id]
-// }
+async function get_tracker_history(client:any, user:any, tracker:Tracker) {
+    var { data, error }: {data: capture[], error:any | null} = await client.from('trackers').select('tracking_history (*)').eq('id', tracker.id).single()
+    return data
+}
 
 async function add_tracker_database(client:any, user:any, tracker:Tracker){
     return await client.from('trackers').insert(tracker)
 }
 
 async function add_tracker_history(client:any, user:any, tracker:Tracker){
-    return await client.from('trackingHistory').insert({'id':tracker.id})
+    return await client.from('tracking_history').insert({'id':tracker.id})
 }
 
 async function add_tracker_user(user:any, client:any, tracker:Tracker){
@@ -31,16 +32,6 @@ async function add_tracker_user(user:any, client:any, tracker:Tracker){
     
     await add_tracker_database(client, user, tracker)
     await add_tracker_history(client, user, tracker)
-    
-    let tracker_ids: string[] = []
-    current_trackers.value.forEach(element => {
-        if (element.id != null){
-            tracker_ids.push(element.id)
-        }
-    });
-    
-
-    // await client.from('userData').update({'trackers': tracker_ids}).eq("user_id", user.id)
 }
 
 export {
