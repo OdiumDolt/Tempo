@@ -18,10 +18,15 @@
     </div>
     
     <div class="tracker-items" :class="[style_theme]">
-        <div class="side-bar-item" v-for="tracker in web_trackers" :class="[style_theme]">
+        <!-- <div class="side-bar-item" v-for="tracker in web_trackers" :class="[style_theme]">
             {{ tracker['name'] }}
-        </div>
+        </div> -->
+
+        <ToolsTrackerButton v-for="tracker in web_trackers" :tracker="tracker">
+        
+        </ToolsTrackerButton>
     </div>
+    
     <ToolsTicker :options="['light-mode', 'dark-mode']" v-model="style_theme"></ToolsTicker>
 </div>
 
@@ -30,16 +35,16 @@
 <script lang="ts">
 
 export default {
-    data(){
+    data() {
         return {
             web_trackers: useTracker(),
             small_add: false,
             style_theme: useTheme()
-        }
+        };
     },
-    methods:{
+    methods: {
 
-    }
+    },
 }
 
 </script>
