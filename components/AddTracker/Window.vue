@@ -118,12 +118,12 @@ export default{
                         url: this.url,
                         user_id: this.user.id,
                         active: true,
-                        history_id: uuidv4(),
                         interval: time,
                         name: this.url,
+                        id: uuidv4()
                     }
                     if (this.user != null){
-                        add_tracker_database(this.user, this.client, new_tracker).then(res => {
+                        add_tracker_user(this.user, this.client, new_tracker).then((res:any) => {
                             this.validation = false
                             this.$emit('closePopUp')
                         })
