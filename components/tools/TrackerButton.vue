@@ -8,12 +8,34 @@ export default {
     },
     data(){
         return {
-            style_theme: useTheme()
+            style_theme: useTheme(),
         }
     },
     methods:{
-        test(e:any){
-            console.log(e.target.value)
+        update_name(e:any){
+            e.preventDefault();
+            e.target.blur()
+
+            return false
+        }
+    },
+    computed:{
+        displayTrackerName(){
+            if (this.tracker.name.length > 17){
+                return this.tracker.name.substring(0,17) + "..."
+            }
+            else{
+                return this.tracker.name
+            }
+        },
+        displayTrackerUrl(){
+            // console.log(this.tracker.url)
+            if (this.tracker.url.length > 25){
+                return this.tracker.url.substring(0,25) + "..."
+            }
+            else{
+                return this.tracker.url
+            }
         }
     }
 
@@ -24,10 +46,9 @@ export default {
 
 <template>
 <div :class="[style_theme]" class="button-container">
-    <textarea :class="[style_theme]" class="button-text large" contenteditable maxlength = "20" @keydown.enter="test" v-if="tracker.name.length < 17">{{ tracker.name }}</textarea>
-    <textarea :class="[style_theme]" class="button-text large" contenteditable maxlength = "20" @keydown.enter="test" v-else>{{ tracker.name.substring(0,17) + "..." }}</textarea>
-    <div :class="[style_theme]" class="button-text small" v-if="tracker.url.length < 20">{{ tracker.url }}</div>
-    <div v-else :class="[style_theme]" class="button-text small">{{ tracker.url.substring(0,20) + "..." }}</div>
+    <textarea :class="[style_theme]" class="button-text large" contenteditable @keydown.enter="update_name" maxlength="17">{{ "penis" }}</textarea>
+    
+    <div :class="[style_theme]" class="button-text small" aria-autocomplete="none">{{ displayTrackerUrl }}</div>
 </div>
 </template>
 
@@ -44,6 +65,7 @@ export default {
     flex-direction: column
     gap: 5px
     overflow: hidden
+
 .button-container::-webkit-scrollbar
     display: none
 
