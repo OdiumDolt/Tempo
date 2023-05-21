@@ -58,7 +58,7 @@ export default {
         transform: rotate(-45deg)
     100%
         scale: 1
-        fill: $blue-1
+        fill: $blue-2
         transform: rotate(360deg)
     
 .check-mark
@@ -66,7 +66,7 @@ export default {
     fill: $grey-4
 
 .check-mark.first-time-checked
-    fill: $blue-1
+    fill: $blue-2
     
 .check-mark.checked-animation
     animation: check_animation 0.75s ease forwards

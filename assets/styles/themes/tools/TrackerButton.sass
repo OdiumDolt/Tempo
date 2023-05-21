@@ -2,12 +2,18 @@
     
 .button-container.dark-mode
     background-color: $grey-2
+    border: solid thin $grey-2
+    transition: border 0.3s
 
 .button-text.dark-mode
     color: $grey-6
+
+.button-container:hover
+    border: thin solid $blue-2
 
 .button-text.dark-mode
     color: white
 
 .button-container.light-mode
     background-color: $grey-7
+    border: solid thin $grey-7

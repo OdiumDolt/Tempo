@@ -11,7 +11,8 @@ export default {
             style_theme: useTheme(),
             client: useSupabaseClient(),
             user: useSupabaseUser(),
-            test:'test_value'
+            test:'test_value',
+            mouse_down: false
         }
     },
     methods:{
@@ -42,6 +43,9 @@ export default {
             else{
                 return this.tracker.url
             }
+        },
+        is_mouse_down(){
+            return this.mouse_down
         }
     }
 
@@ -51,7 +55,7 @@ export default {
 </script>
 
 <template>
-<div :class="[style_theme]" class="button-container">
+<div :class="[style_theme, {'scaled':is_mouse_down}]" class="button-container" @mousedown.self="mouse_down = true">
     <div class="text-container">
         <textarea :class="[style_theme]" class="button-text large" contenteditable @keydown.enter="update_name" maxlength="17" v-model="tracker.name">{{ tracker.name }}</textarea>
         
@@ -74,9 +78,6 @@ export default {
 .button-container
     padding: 10px
     border-radius: 5px
-    // aspect-ratio: 3/1
-    // min-height: 80px
-    // max-height: 200px
     box-sizing: border-box
     justify-content: space-between
     display: flex
@@ -85,6 +86,15 @@ export default {
     width: 100%
     overflow: hidden
     gap: 10px
+
+@keyframes scale 
+    50%
+        scale: 0.95
+    100%
+        scale: 1
+
+.scaled
+    animation: scale 0.2s ease
 
 .text-container
     display: flex
@@ -105,6 +115,7 @@ export default {
 
 .button-text.small
     font-size: 12px
+    width: fit-content
 </style>
 
 <style scoped src="@/assets/styles/themes/tools/TrackerButton.sass" lang="sass"></style>
