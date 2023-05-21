@@ -3,7 +3,7 @@
 // if the request sees any errors, it will attempt to resolve them, and make the request again.
 async function get_user_trackers(client:any, user:any) {
 
-    var { data, error }: {data: Tracker[], error:any | null} = await client.from("trackers").select().eq('user_id', user.id)
+    var { data, error }: {data: Tracker[], error:any | null} = await client.from("trackers").select().order('created_at', { ascending: false })
     console.log(await get_tracker_history(client, user, data[0]))
     if (error != null){
         throw new Error(error)
@@ -19,6 +19,14 @@ async function get_tracker_history(client:any, user:any, tracker:Tracker) {
 
 async function add_tracker_database(client:any, user:any, tracker:Tracker){
     return await client.from('trackers').insert(tracker)
+}
+
+async function change_tracker_name(client:any, user:any, tracker:Tracker) {
+    return await client.from('trackers').update({'name':tracker.name}).eq('id', tracker.id)
+}
+
+async function change_tracker_active(client:any, user:any, tracker:Tracker){
+    return await client.from('trackers').update({'active':tracker.active}).eq('id', tracker.id)
 }
 
 async function add_tracker_history(client:any, user:any, tracker:Tracker){
@@ -37,4 +45,6 @@ async function add_tracker_user(user:any, client:any, tracker:Tracker){
 export {
     get_user_trackers,
     add_tracker_user,
+    change_tracker_name,
+    change_tracker_active
 }

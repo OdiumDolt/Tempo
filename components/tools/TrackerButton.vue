@@ -9,14 +9,21 @@ export default {
     data(){
         return {
             style_theme: useTheme(),
+            client: useSupabaseClient(),
+            user: useSupabaseUser(),
+            test:'test_value'
         }
     },
     methods:{
         update_name(e:any){
             e.preventDefault();
             e.target.blur()
-
+            change_tracker_name(this.client, this.user, this.tracker)
             return false
+        },
+        update_active(value:boolean){
+            this.tracker.active = value
+            change_tracker_active(this.client, this.user, this.tracker)
         }
     },
     computed:{
@@ -29,7 +36,6 @@ export default {
             }
         },
         displayTrackerUrl(){
-            // console.log(this.tracker.url)
             if (this.tracker.url.length > 25){
                 return this.tracker.url.substring(0,25) + "..."
             }
@@ -46,9 +52,14 @@ export default {
 
 <template>
 <div :class="[style_theme]" class="button-container">
-    <textarea :class="[style_theme]" class="button-text large" contenteditable @keydown.enter="update_name" maxlength="17">{{ "penis" }}</textarea>
-    
-    <div :class="[style_theme]" class="button-text small" aria-autocomplete="none">{{ displayTrackerUrl }}</div>
+    <div class="text-container">
+        <textarea :class="[style_theme]" class="button-text large" contenteditable @keydown.enter="update_name" maxlength="17" v-model="tracker.name">{{ tracker.name }}</textarea>
+        
+        <div :class="[style_theme]" class="button-text small" aria-autocomplete="none">{{ displayTrackerUrl }}</div>
+    </div>
+    <div class="active-container">
+        <ToolsCheckMark class="check-box" :options="[false, true]" v-model="tracker.active" @update:modelValue="update_active"></ToolsCheckMark>
+    </div>
 </div>
 </template>
 
@@ -56,15 +67,28 @@ export default {
 <style scoped lang="sass">
 @import '@/assets/styles/public/fonts.sass'
 
+
+.active-container
+    align-self: right
+
 .button-container
     padding: 10px
     border-radius: 5px
-    aspect-ratio: 3/1
-    min-height: 80px
+    // aspect-ratio: 3/1
+    // min-height: 80px
+    // max-height: 200px
+    box-sizing: border-box
+    justify-content: space-between
+    display: flex
+    flex-direction: row
+    gap: 5px
+    width: 100%
+    overflow: hidden
+    gap: 10px
+
+.text-container
     display: flex
     flex-direction: column
-    gap: 5px
-    overflow: hidden
 
 .button-container::-webkit-scrollbar
     display: none
@@ -73,11 +97,11 @@ export default {
     all: unset
     font-family: 'Reem Kufi Fun', sans-serif
     overflow: hidden
-    height: 30px
-    width: fit-content
+    width: 100%
 
 .button-text.large
     font-size: 20px
+    height: 30px
 
 .button-text.small
     font-size: 12px

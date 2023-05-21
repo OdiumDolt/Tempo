@@ -18,9 +18,6 @@
     </div>
     
     <div class="tracker-items" :class="[style_theme]">
-        <!-- <div class="side-bar-item" v-for="tracker in web_trackers" :class="[style_theme]">
-            {{ tracker['name'] }}
-        </div> -->
 
         <ToolsTrackerButton v-for="tracker in web_trackers" :tracker="tracker">
         
@@ -59,8 +56,8 @@ export default {
     flex-direction: column
     gap: 20px
     box-sizing: border-box
-    // height: 100px
     min-width: 175px
+    max-width: 300px
     width: 20%
     flex-shrink: 0
 
