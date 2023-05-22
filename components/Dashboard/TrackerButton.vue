@@ -65,9 +65,9 @@ export default {
 </script>
 
 <template>
-<div :class="[style_theme]" class="button-container" id="button-container" @mousedown.self="click_animation">
+<div :class="[style_theme]" class="button-container" id="button-container" @mousedown="click_animation">
     <div class="button-row-one">
-        <div :class="[style_theme]" class="button-text large" contenteditable="true" @keydown="update_name">{{ tracker.name }}</div>
+        <div :class="[style_theme]" class="button-text large" @keydown="update_name">{{ tracker.name }}</div>
         
         <div class="active-container">
             <ToolsBooleanCheckMark class="check-box" :options="[false, true]" v-model="tracker.active" @update:modelValue="update_active"></ToolsBooleanCheckMark>
