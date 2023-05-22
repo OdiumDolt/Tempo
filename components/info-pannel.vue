@@ -5,6 +5,9 @@
 </template>
 
 <script lang="ts">
+
+import Chart from 'chart.js/auto'
+
 export default {    
     data(){
         return {
