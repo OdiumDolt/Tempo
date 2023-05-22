@@ -65,7 +65,7 @@ export default {
 </script>
 
 <template>
-<div :class="[style_theme]" class="button-container" id="button-container" @mousedown="click_animation">
+<div :class="[style_theme]" class="button-container" id="button-container" @mousedown.self="click_animation">
     <div class="button-row-one">
         <div :class="[style_theme]" class="button-text large" @keydown="update_name">{{ tracker.name }}</div>
         
@@ -98,7 +98,6 @@ export default {
     display: flex
     justify-content: space-between
     user-select: none
-    // pointer-events: none
 
 @keyframes scale 
     50%
@@ -129,11 +128,13 @@ export default {
     font-size: 20px
     height: 30px
     width: fit-content
+    pointer-events: none
 
 .button-text.small
     font-size: 12px
     width: fit-content
     user-select: none
+    pointer-events: none
 
 </style>
 
