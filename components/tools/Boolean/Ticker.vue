@@ -98,4 +98,4 @@ export default {
     z-index: 1
 </style>
 
-<style src="@/assets/styles/themes/tools/Ticker.sass" lang="sass" scoped></style>
+<style src="@/assets/styles/themes/tools/Boolean/Ticker.sass" lang="sass" scoped></style>

@@ -1,12 +1,12 @@
 <template>
 <div class="test-window" :class="[style_theme]">
-
+    <ToolsChart>
+        
+    </ToolsChart>
 </div>
 </template>
 
 <script lang="ts">
-
-import Chart from 'chart.js/auto'
 
 export default {    
     data(){

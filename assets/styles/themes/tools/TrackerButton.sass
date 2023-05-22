@@ -1,19 +1,33 @@
 @import '@/assets/styles/public/colors.sass'
-    
+
+
+// ------------------ DARK MODE
 .button-container.dark-mode
     background-color: $grey-2
     border: solid thin $grey-2
     transition: border 0.3s
 
-.button-text.dark-mode
-    color: $grey-6
-
-.button-container:hover
+.button-container.dark-mode:hover
     border: thin solid $blue-2
 
-.button-text.dark-mode
+.button-text.dark-mode.large
     color: white
 
+.button-text.dark-mode.small
+    color: $grey-6
+
+
+// ------------------- LIGHT MODE
 .button-container.light-mode
     background-color: $grey-7
     border: solid thin $grey-7
+    transition: border 0.3s
+
+.button-container.light-mode:hover
+    border: solid thin $blue-1
+
+.button-text.light-mode.large
+    color: $grey-2
+
+.button-text.light-mode.small
+    color: $grey-4

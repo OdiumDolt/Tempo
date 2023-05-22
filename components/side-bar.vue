@@ -24,7 +24,7 @@
         </ToolsTrackerButton>
     </div>
     
-    <ToolsTicker :options="['light-mode', 'dark-mode']" v-model="style_theme"></ToolsTicker>
+    <ToolsBooleanTicker :options="['light-mode', 'dark-mode']" v-model="style_theme"></ToolsBooleanTicker>
 </div>
 
 </template>

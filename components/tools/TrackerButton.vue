@@ -70,7 +70,7 @@ export default {
         <div :class="[style_theme]" class="button-text large" contenteditable="true" @keydown="update_name">{{ tracker.name }}</div>
         
         <div class="active-container">
-            <ToolsCheckMark class="check-box" :options="[false, true]" v-model="tracker.active" @update:modelValue="update_active"></ToolsCheckMark>
+            <ToolsBooleanCheckMark class="check-box" :options="[false, true]" v-model="tracker.active" @update:modelValue="update_active"></ToolsBooleanCheckMark>
         </div>
     </div>
 
