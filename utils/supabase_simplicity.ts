@@ -4,7 +4,6 @@
 async function get_user_trackers(client:any, user:any) {
 
     var { data, error }: {data: Tracker[], error:any | null} = await client.from("trackers").select().order('created_at', { ascending: false })
-    console.log(await get_tracker_history(client, user, data[0]))
     if (error != null){
         throw new Error(error)
     }
