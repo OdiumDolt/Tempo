@@ -12,19 +12,32 @@ export default {
             client: useSupabaseClient(),
             user: useSupabaseUser(),
             test:'test_value',
-            mouse_down: false
+            mouse_down: false,
+            
         }
     },
     methods:{
         update_name(e:any){
-            e.preventDefault();
-            e.target.blur()
-            change_tracker_name(this.client, this.user, this.tracker)
+            if (e.target.innerHTML.length > 16 && e.key != "Backspace"){
+                e.preventDefault();
+            }
+
+            if (e.key == "Enter"){
+                e.target.blur()
+                this.tracker.name = e.target.innerHTML.toString()
+                change_tracker_name(this.client, this.user, this.tracker)
+            }
             return false
         },
         update_active(value:boolean){
             this.tracker.active = value
             change_tracker_active(this.client, this.user, this.tracker)
+        },
+        click_animation(e:any){
+            e.target.classList.add('scaled')
+            e.target.addEventListener('animationend', function (){
+                e.target.classList.remove('scaled')
+            }, { once: true })
         }
     },
     computed:{
@@ -44,10 +57,7 @@ export default {
                 return this.tracker.url
             }
         },
-        is_mouse_down(){
-            return this.mouse_down
-        }
-    }
+    },
 
 
 }
@@ -55,15 +65,16 @@ export default {
 </script>
 
 <template>
-<div :class="[style_theme, {'scaled':is_mouse_down}]" class="button-container" @mousedown.self="mouse_down = true">
-    <div class="text-container">
-        <textarea :class="[style_theme]" class="button-text large" contenteditable @keydown.enter="update_name" maxlength="17" v-model="tracker.name">{{ tracker.name }}</textarea>
+<div :class="[style_theme]" class="button-container" id="button-container" @mousedown.self="click_animation">
+    <div class="button-row-one">
+        <div :class="[style_theme]" class="button-text large" contenteditable="true" @keydown="update_name">{{ tracker.name }}</div>
         
-        <div :class="[style_theme]" class="button-text small" aria-autocomplete="none">{{ displayTrackerUrl }}</div>
+        <div class="active-container">
+            <ToolsCheckMark class="check-box" :options="[false, true]" v-model="tracker.active" @update:modelValue="update_active"></ToolsCheckMark>
+        </div>
     </div>
-    <div class="active-container">
-        <ToolsCheckMark class="check-box" :options="[false, true]" v-model="tracker.active" @update:modelValue="update_active"></ToolsCheckMark>
-    </div>
+
+    <div :class="[style_theme]" class="button-text small" aria-autocomplete="none">{{ displayTrackerUrl }}</div>
 </div>
 </template>
 
@@ -79,13 +90,15 @@ export default {
     padding: 10px
     border-radius: 5px
     box-sizing: border-box
-    justify-content: space-between
     display: flex
-    flex-direction: row
-    gap: 5px
+    flex-direction: column
+
+.button-row-one
     width: 100%
-    overflow: hidden
-    gap: 10px
+    display: flex
+    justify-content: space-between
+    user-select: none
+    // pointer-events: none
 
 @keyframes scale 
     50%
@@ -93,8 +106,8 @@ export default {
     100%
         scale: 1
 
-.scaled
-    animation: scale 0.2s ease
+.button-container.scaled
+    animation: scale 0.2s linear
 
 .text-container
     display: flex
@@ -104,18 +117,24 @@ export default {
     display: none
 
 .button-text
-    all: unset
+    // all: unset
     font-family: 'Reem Kufi Fun', sans-serif
     overflow: hidden
     width: 100%
 
+.button-text:focus
+    outline: none
+
 .button-text.large
     font-size: 20px
     height: 30px
+    width: fit-content
 
 .button-text.small
     font-size: 12px
     width: fit-content
+    user-select: none
+
 </style>
 
 <style scoped src="@/assets/styles/themes/tools/TrackerButton.sass" lang="sass"></style>
