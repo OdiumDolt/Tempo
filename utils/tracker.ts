@@ -16,7 +16,3 @@ interface Tracker {
 }
 
 
-export {
-    Tracker, 
-    capture
-}
