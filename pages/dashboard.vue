@@ -2,9 +2,9 @@
     <div class="body" :class="[style_theme]">
         
         <ToolsPopup v-if="add_tracker_window" @closePopUp = "closeAddWindow">
-            <AddTrackerWindow :style_theme="style_theme" @closePopUp = "closeAddWindow" @validation_check="AddWebsiteTracker" ref='add_window'>
+            <DashboardAddTrackerWindow style_theme="style_theme" @closePopUp = "closeAddWindow" @validation_check="AddWebsiteTracker" ref='add_window'>
 
-            </AddTrackerWindow> 
+            </DashboardAddTrackerWindow> 
         </ToolsPopup>
         
         <div class="dashboard-container">
