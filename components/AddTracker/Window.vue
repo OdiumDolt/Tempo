@@ -3,14 +3,14 @@
         
         <!-- Top Container for the window -->
         <div class="container-top" :class="[style_theme]">
-            <ToolsInputField 
+            <ToolsInputText
             
                 v-model="url"
                 :placeholder="placeholderText"
                 class="search-input">
-            </ToolsInputField>
+            </ToolsInputText>
             
-            <ToolsSlider 
+            <ToolsInputSlider
             
                 class="slider" 
                 color="#1b4bcc" 
@@ -18,24 +18,24 @@
                 :iterables=slider_interables
                 >
             
-            </ToolsSlider>
+            </ToolsInputSlider>
         </div>
         
         <!-- Bottom window for the tracker container -->
         <div class="container-bottom" :class="[style_theme]">
             
-            <ToolsButton :theme="'cancel'" class="buttons" @click="$emit('closePopUp')" :style_theme="style_theme">
+            <ToolsInputButton :theme="'cancel'" class="buttons" @click="$emit('closePopUp')" :style_theme="style_theme">
                 Cancel
-            </ToolsButton>
+            </ToolsInputButton>
             
-            <ToolsButton :theme="'blue-select'" class="buttons" @click="addTracker">
+            <ToolsInputButton :theme="'blue-select'" class="buttons" @click="addTracker">
                 <div v-if="!validation">
                     Apply Tracker
                 </div>
                 <div v-else class="flashing-dots">
                     <div class="dot-flashing"></div>
                 </div>
-            </ToolsButton>
+            </ToolsInputButton>
         
         </div>
     

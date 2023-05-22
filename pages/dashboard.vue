@@ -9,12 +9,12 @@
         
         <div class="dashboard-container">
             
-            <side-bar @addTracker="add_tracker_window = true">
+            <DashboardSideBar @addTracker="add_tracker_window = true">
             
-            </side-bar>
-            <info-pannel>
+            </DashboardSideBar>
+            <DashboardInfoPanel>
 
-            </info-pannel>
+            </DashboardInfoPanel>
         </div>
     </div>
 

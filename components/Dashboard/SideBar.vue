@@ -5,23 +5,23 @@
     
     <div class="search-pallete" :class="[style_theme, {'small-flex-gap': !small_add}]">
         
-        <ToolsButton :theme="'blue-select'" class="add-button" :class="{'smaller-button': small_add}" @click="$emit('addTracker')">
+        <ToolsInputButton :theme="'blue-select'" class="add-button" :class="{'smaller-button': small_add}" @click="$emit('addTracker')">
             Add Tracker
-        </ToolsButton>
-        <ToolsInputField 
+        </ToolsInputButton>
+        <ToolsInputText
             v-on:focus="small_add = true"
             v-on:blur="small_add = false"
             type="search"
             :placeholder="'🔍Search'"
             class="search-input">
-        </ToolsInputField>
+        </ToolsInputText>
     </div>
     
     <div class="tracker-items" :class="[style_theme]">
 
-        <ToolsTrackerButton v-for="tracker in web_trackers" :tracker="tracker">
+        <DashboardTrackerButton v-for="tracker in web_trackers" :tracker="tracker">
         
-        </ToolsTrackerButton>
+        </DashboardTrackerButton>
     </div>
     
     <ToolsBooleanTicker :options="['light-mode', 'dark-mode']" v-model="style_theme"></ToolsBooleanTicker>
