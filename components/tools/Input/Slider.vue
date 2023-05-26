@@ -193,4 +193,4 @@ export default {
     width: 40px
 </style>
 
-<style scoped lang="sass" src="@/assets/styles/themes/tools/Slider.sass"></style>
+<style scoped lang="sass" src="@/assets/styles/themes/tools/Input/Slider.sass"></style>

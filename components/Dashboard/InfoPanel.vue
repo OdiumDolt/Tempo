@@ -1,9 +1,7 @@
 <template>
-<div class="test-window" :class="[style_theme]">
-    <ToolsChart>
-        
-    </ToolsChart>
-</div>
+<ToolsPanel>
+    
+</ToolsPanel>
 </template>
 
 <script lang="ts">
@@ -22,14 +20,8 @@ export default {
 <style lang="sass" scoped>
 @import '@/assets/styles/public/colors.sass'
 
-.test-window
-    width: 100%
-    border-radius: 5px
-
-.test-window.light-mode
-    background-color: $grey-7
-
-.test-window.dark-mode
-    background-color: $grey-1
+.container
+    display: flex
+    
 
 </style>

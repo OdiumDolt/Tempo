@@ -36,4 +36,4 @@ input
     font-family: 'Reem Kufi Fun', sans-serif
 </style>
 
-<style src="@/assets/styles/themes/tools/InputField.sass" lang="sass" scoped></style>
+<style src="@/assets/styles/themes/tools/Input/Text.sass" lang="sass" scoped></style>

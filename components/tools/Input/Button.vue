@@ -45,4 +45,4 @@ button.blue-select
 
 </style>
 
-<style src="@/assets/styles/themes/tools/Button.sass" lang="sass" scoped></style>
+<style src="@/assets/styles/themes/tools/Input/Button.sass" lang="sass" scoped></style>
