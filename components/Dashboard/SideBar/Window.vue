@@ -19,9 +19,9 @@
     
     <div class="tracker-items" :class="[style_theme]">
 
-        <DashboardTrackerButton v-for="tracker in web_trackers" :tracker="tracker">
+        <DashboardSideBarTrackerButton v-for="tracker in web_trackers" :tracker="tracker">
         
-        </DashboardTrackerButton>
+        </DashboardSideBarTrackerButton>
     </div>
     
     <ToolsBooleanTicker :options="['light-mode', 'dark-mode']" v-model="style_theme"></ToolsBooleanTicker>

@@ -209,4 +209,4 @@ export default{
     padding-right: 10px
 </style>
 
-<style src="@/assets/styles/themes/addTracker/Window.sass" lang="sass" scoped></style>
+<style src="@/assets/styles/themes/Dashboard/AddTracker/Window.sass" lang="sass" scoped></style>
