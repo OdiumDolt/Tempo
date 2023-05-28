@@ -1,4 +1,5 @@
 <template>
+    
     <div class="body" :class="[style_theme]">
         
         <ToolsPopup v-if="add_tracker_window" @closePopUp = "closeAddWindow">
@@ -21,6 +22,8 @@
 </template>
 
 <script lang="ts">
+// import { tr } from '@faker-js/faker';
+
 export default {
     data() {
         return {
@@ -28,8 +31,8 @@ export default {
             client: useSupabaseClient(),
             add_tracker_window: false,
             style_theme: useTheme(),
-            trackers: useTracker()
-
+            trackers: useTracker(),
+            current_tracker: useCurrentTracker()
         };
     },
     methods: {
@@ -51,7 +54,7 @@ export default {
         var data = get_user_trackers(this.client, this.user)
             .then(data => {
                 this.trackers = data
-
+                this.current_tracker = this.trackers[0]
                 useState('supauser', () => this.user)
                 useState('supaclient', () => this.client)
             })
