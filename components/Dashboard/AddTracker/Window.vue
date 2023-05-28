@@ -123,7 +123,7 @@ export default{
                         id: uuidv4()
                     }
                     if (this.user != null){
-                        add_tracker_user(this.user, this.client, new_tracker).then((res:any) => {
+                        add_tracker(this.user, this.client, new_tracker).then((res:any) => {
                             this.validation = false
                             this.$emit('closePopUp')
                         })
