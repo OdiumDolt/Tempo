@@ -13,6 +13,7 @@ export default {
             user: useSupabaseUser(),
             test:'test_value',
             mouse_down: false,
+            current_tracker: useCurrentTracker()
             
         }
     },
@@ -35,6 +36,7 @@ export default {
         },
         click_animation(e:any){
             e.target.classList.add('scaled')
+            this.current_tracker = this.tracker
             e.target.addEventListener('animationend', function (){
                 e.target.classList.remove('scaled')
             }, { once: true })
