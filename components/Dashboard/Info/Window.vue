@@ -46,8 +46,16 @@ export default {
                 <ToolsPanel class="status-bar">
                     <div class="status-bar-container" v-if="tracker != null">
                         <ToolsDesignBreathingRing class="breathing-ring">
-                            <div v-if="tracker_history.length > 0 && tracker_history[0].status == 200">
-                                You Good
+                            <div  v-if="tracker_history.length > 0">
+                                <div v-if="tracker_history[0].status == 200">
+                                    You Good
+                                </div>
+                                <div v-else>
+                                    You aint doing too good ima keep it a stack
+                                </div>
+                            </div>
+                            <div v-else>
+                                You aint doing so good ima be honest
                             </div>
 
                         </ToolsDesignBreathingRing>
@@ -72,7 +80,6 @@ export default {
 @import '@/assets/styles/public/colors.sass'
 
 .breathing-ring
-    // height: fit-content
     margin: auto
     width: 100%
     padding: 60px
