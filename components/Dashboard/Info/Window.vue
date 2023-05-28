@@ -44,23 +44,9 @@ export default {
         <div class="flex-container">
             <div class="top-bar">
                 <ToolsPanel class="status-bar">
-                    <div class="status-bar-container" v-if="tracker != null">
-                        <ToolsDesignBreathingRing class="breathing-ring">
-                            <div  v-if="tracker_history.length > 0">
-                                <div v-if="tracker_history[0].status == 200">
-                                    You Good
-                                </div>
-                                <div v-else>
-                                    You aint doing too good ima keep it a stack
-                                </div>
-                            </div>
-                            <div v-else>
-                                You aint doing so good ima be honest
-                            </div>
+                    <DashboardInfoBasicInfo>
 
-                        </ToolsDesignBreathingRing>
-                        <div class="text">Hey</div>
-                    </div>
+                    </DashboardInfoBasicInfo>
                 </ToolsPanel>
                 
                 <ToolsPanel>
@@ -79,11 +65,6 @@ export default {
 <style scoped lang="sass">
 @import '@/assets/styles/public/colors.sass'
 
-.breathing-ring
-    margin: auto
-    width: 100%
-    padding: 60px
-    box-sizing: border-box
 
 .container
     height: 100%
@@ -106,15 +87,7 @@ export default {
 
 .bottom-bar
     height: 100%
-
 .status-bar
     width: 500px
     aspect-ratio: 1/1.5
-
-.status-bar-container
-    display: flex
-    height: 100%
-    justify-content: space-between
-    align-content: center
-    flex-direction: column
 </style>
