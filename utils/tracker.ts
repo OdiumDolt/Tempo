@@ -1,9 +1,7 @@
 interface capture {
     id:string;
-    index:number;
     status:number
     date:Date
-    graph_satus: number
 }
 
 interface Tracker {
@@ -14,5 +12,3 @@ interface Tracker {
     active: boolean,
     name: string,
 }
-
-
