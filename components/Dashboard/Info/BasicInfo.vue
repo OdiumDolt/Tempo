@@ -43,10 +43,21 @@ export default {
     </ToolsDesignBreathingRing>
     
     
-    <div class="text">
-        
-        Hey</div>
-
+    <div class="info-text-container">
+        <div class="large-text info-text">
+            {{ tracker.url }}
+        </div>
+        <div class="basic-text info-text">
+             Protocol: HTTPS
+        </div>
+        <div class="basic-text info-text">
+            Protocol version: 2.1
+        </div>
+        <div class="basic-text info-text">
+            Request interval: {{ tracker.interval }}
+        </div>
+    
+    </div>
 
 </div>
 
@@ -58,22 +69,37 @@ export default {
 @import '@/assets/styles/public/colors.sass'
 .breathing-ring
     margin: auto
-    width: 100%
-    padding:55px
+    width: 60%
     box-sizing: border-box
 
 .display-text
     color: $white
     font-family: 'Reem Kufi Fun', sans-serif
-    font-size: 1.8vw
+    font-size: 2.8vh
     padding: 10px
     text-align: center
 
 .status-bar-container
     display: flex
     height: 100%
-    justify-content: space-between
+    // justify-content: space-between
     align-content: center
     flex-direction: column
 
+.info-text-container
+    display: flex
+    flex-direction: column
+    gap: 5px
+    padding: 10px
+
+.info-text
+    font-family: 'Reem Kufi Fun', sans-serif
+
+.large-text
+    color: $grey-8
+    font-size: 3.5vh
+
+.basic-text
+    color: $grey-5
+    font-size: 2vh
 </style>
