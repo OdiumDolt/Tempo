@@ -64,7 +64,7 @@ export default {
 
 <style scoped lang="sass">
 @import '@/assets/styles/public/colors.sass'
-
+@import '@/assets/styles/public/fonts.sass'
 
 .container
     height: 100%
@@ -87,6 +87,7 @@ export default {
 
 .bottom-bar
     height: 100%
+
 .status-bar
     width: 500px
     aspect-ratio: 1/1.5
