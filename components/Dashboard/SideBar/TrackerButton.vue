@@ -140,4 +140,4 @@ export default {
 
 </style>
 
-<style scoped src="@/assets/styles/themes/Dashboard/TrackerButton.sass" lang="sass"></style>
+<style scoped src="@/assets/styles/themes/Dashboard/SideBar/TrackerButton.sass" lang="sass"></style>

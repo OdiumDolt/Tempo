@@ -113,4 +113,4 @@ export default {
     display: hidden
 </style>
 
-<style scoped lang="sass" src="@/assets/styles/themes/Dashboard/SideBar.sass"></style>
+<style scoped lang="sass" src="@/assets/styles/themes/Dashboard/SideBar/Window.sass"></style>

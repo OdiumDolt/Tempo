@@ -9,7 +9,8 @@ export default {
                 200: "#1b4bcc",
                 404: "#ff3636",
                 304: '#d6af11',
-            } as any
+            } as any,
+            style_theme: useTheme()
         }
     },
     watch:{
@@ -29,7 +30,7 @@ export default {
 <template>
 <div class="status-bar-container" v-if="tracker != null">
     <ToolsDesignBreathingRing class="breathing-ring" :color="status_colors">
-        <div v-if="tracker_history.length > 0" class="display-text">
+        <div v-if="tracker_history.length > 0" class="display-text" :class="[style_theme]">
             <div v-if="tracker_history[0].status == 200">
                 Currently Online.
             </div>
@@ -37,23 +38,23 @@ export default {
                 You aint doing too good ima keep it a stack
             </div>
         </div>
-        <div v-else class="display-text">
+        <div v-else class="display-text" :class="[style_theme]">
             No captures yet.
         </div>
     </ToolsDesignBreathingRing>
     
     
     <div class="info-text-container">
-        <div class="large-text info-text">
+        <div class="large-text info-text" :class="[style_theme]">
             {{ tracker.url }}
         </div>
-        <div class="basic-text info-text">
+        <div class="basic-text info-text" :class="[style_theme]">
              Protocol: HTTPS
         </div>
-        <div class="basic-text info-text">
+        <div class="basic-text info-text" :class="[style_theme]">
             Protocol version: 2.1
         </div>
-        <div class="basic-text info-text">
+        <div class="basic-text info-text" :class="[style_theme]">
             Request interval: {{ tracker.interval }}
         </div>
     
@@ -73,7 +74,6 @@ export default {
     box-sizing: border-box
 
 .display-text
-    color: $white
     font-family: 'Reem Kufi Fun', sans-serif
     font-size: 2.8vh
     padding: 10px
@@ -100,6 +100,7 @@ export default {
     font-size: 3.5vh
 
 .basic-text
-    color: $grey-5
     font-size: 2vh
 </style>
+
+<style scoped lang="sass" src="@/assets/styles/themes/Dashboard/Info/BasicInfo.sass"></style>

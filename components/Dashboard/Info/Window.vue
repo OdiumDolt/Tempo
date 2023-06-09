@@ -91,4 +91,5 @@ export default {
 .status-bar
     width: 500px
     aspect-ratio: 1/1.5
+
 </style>
