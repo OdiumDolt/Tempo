@@ -50,7 +50,9 @@ export default {
                 </ToolsPanel>
                 
                 <ToolsPanel>
-                    
+                    <DashboardInfoUptimeBreakdown>
+                        
+                    </DashboardInfoUptimeBreakdown>
                 </ToolsPanel>
             </div>
             <div class="bottom-bar">
