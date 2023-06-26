@@ -8,9 +8,9 @@ export default {
 <template>
     <div class="breakdown-container">
         <div class="menu-bar-container">
-            <div>
-                selector-shit
-            </div>
+            <ToolsInputOptionsSelector :options="['daily', 'weekly', 'monthly', 'max']">
+
+            </ToolsInputOptionsSelector>
             <div>
                 edit-shit
             </div>
@@ -34,7 +34,7 @@ export default {
     height: 100%
     padding: 10px
     gap: 10px
-    
+
 .menu-bar-container
     display: flex
     justify-content: space-between
