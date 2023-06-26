@@ -8,7 +8,7 @@ export default {
 <template>
     <div class="breakdown-container">
         <div class="menu-bar-container">
-            <ToolsInputOptionsSelector :options="['daily', 'weekly', 'monthly', 'max']">
+            <ToolsInputOptionsSelector :options="['daily', 'weekly', 'monthly', 'max']" :size="'1.9vh'">
 
             </ToolsInputOptionsSelector>
             <div>
