@@ -1,11 +1,20 @@
 const useTheme = () => useState<string>('color', () => 'dark-mode')
-const useTracker = () => useState<Tracker[]>('local_trackers', () => [])
-const useCurrentCaptures = () => useState<capture[]>('tracker_histories', () => [])
-const useCurrentTracker = () => useState<Tracker | null>('current_tracker', () => null)
+const useTrackers = () => useState<Tracker[]>('local_trackers', () => [])
+const useCurrentCaptures = () => useState<capture[]>('captures', () => [])
+const useCurrentTracker = () => useState<Tracker | null>('tracker', () => null)
+
+var localDate = new Date();
+var utcTime = localDate.getTime()
+var utcDate = new Date(utcTime);
+utcDate.setDate(utcDate.getDate() - 100)
+
+const useCurrentTimeFrame = () => useState<Date>('timeframe', () => utcDate)
+
 
 export {
     useTheme,
-    useTracker,
+    useTrackers,
     useCurrentTracker,
-    useCurrentCaptures
+    useCurrentCaptures,
+    useCurrentTimeFrame
 }

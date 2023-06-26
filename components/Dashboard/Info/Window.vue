@@ -5,17 +5,10 @@ export default {
     
     data(){
         
-        var localDate = new Date();
-        var timezoneOffset = localDate.getTimezoneOffset();
-        var utcTime = localDate.getTime() + (timezoneOffset * 60000);
-        var utcDate = new Date(utcTime);
-        utcDate.setDate(utcDate.getDate() - 1)
-
         return {
             style_theme: useTheme(),
             tracker: useCurrentTracker(),
-            timeframe: utcDate,
-            timeframe_string: "daily",
+            timeframe: useCurrentTimeFrame(),
             client: useSupabaseClient(),
             user: useSupabaseUser(),
             tracker_history: useCurrentCaptures(),
