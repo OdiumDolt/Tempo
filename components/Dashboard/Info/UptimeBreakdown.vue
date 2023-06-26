@@ -8,9 +8,9 @@ export default {
 <template>
     <div class="breakdown-container">
         <div class="menu-bar-container">
-            <ToolsInputOptionsSelector :options="['daily', 'weekly', 'monthly', 'max']" :size="'1.9vh'">
+            <ToolsInputOptionsSelect :options="['daily', 'weekly', 'monthly', 'max']" :size="'1.9vh'">
 
-            </ToolsInputOptionsSelector>
+            </ToolsInputOptionsSelect>
             <div>
                 edit-shit
             </div>
