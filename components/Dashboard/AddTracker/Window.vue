@@ -29,7 +29,7 @@
             </ToolsInputButton>
             
             <ToolsInputButton :theme="'blue-select'" class="buttons" @click="addTracker">
-                <div v-if="!validation">
+                <div v-if="!is_validating">
                     Apply Tracker
                 </div>
                 <div v-else class="flashing-dots">
@@ -53,11 +53,10 @@ export default{
         return {
             placeholderText: "",
             slider_interables: ['30 s', '1 min', '5 min', '10 min', '30 min', '1 hr'],
-            min_time: 30,
-            max_time: 3600,
             websites: list_of_websites,
             ping_interval: '30s',
-            validation:false,
+            // check if the user is in the proccess of validating adding the tracker
+            is_validating: false,
             is_itterating:false,
             text_animation_interval: interval,
             url:"",
@@ -102,8 +101,8 @@ export default{
         },
 
         async addTracker(){
-            if (this.validation != true){
-                this.validation = true
+            if (this.is_validating != true){
+                this.is_validating = true
                 await new Promise(resolve => setTimeout(resolve, 500));
                 if (this.slider_interables.includes(this.ping_interval)){
                     var time = get_time_in_int(this.ping_interval)
@@ -124,7 +123,7 @@ export default{
                     }
                     if (this.user != null){
                         add_tracker(this.user, this.client, new_tracker).then((res:any) => {
-                            this.validation = false
+                            this.is_validating = false
                             this.$emit('closePopUp')
                         })
                     }  
