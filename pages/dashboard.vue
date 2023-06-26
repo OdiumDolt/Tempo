@@ -31,7 +31,7 @@ export default {
             client: useSupabaseClient(),
             add_tracker_window: false,
             style_theme: useTheme(),
-            trackers: useTracker(),
+            trackers: useTrackers(),
             current_tracker: useCurrentTracker()
         };
     },

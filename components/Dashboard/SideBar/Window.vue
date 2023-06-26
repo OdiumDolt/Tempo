@@ -34,7 +34,7 @@
 export default {
     data() {
         return {
-            web_trackers: useTracker(),
+            web_trackers: useTrackers(),
             small_add: false,
             style_theme: useTheme()
         };

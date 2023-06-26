@@ -29,7 +29,7 @@ async function change_tracker_active(client:any, user:any, tracker:Tracker){
 }
 
 async function add_tracker(user:any, client:any, tracker:Tracker){
-    let current_trackers = useTracker()
+    let current_trackers = useTrackers()
     
     current_trackers.value.unshift(tracker)
     
