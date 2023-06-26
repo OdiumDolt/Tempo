@@ -6,8 +6,8 @@
                 Login
             </div>
             
-            <input class="text-input" placeholder="Username/Email" v-model="username" :class="[style_theme]">
-            <input class="text-input" placeholder="Password" v-model="password" :class="[style_theme]">
+            <input type="email" class="text-input" placeholder="Username/Email" v-model="username" :class="[style_theme]">
+            <input type="password" class="text-input" placeholder="Password" v-model="password" :class="[style_theme]">
             
             <div class="click-button" @click="attemptLogin" :class="[style_theme]">
                 Login
