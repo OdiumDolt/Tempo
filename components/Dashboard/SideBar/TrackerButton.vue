@@ -11,35 +11,33 @@ export default {
             style_theme: useTheme(),
             client: useSupabaseClient(),
             user: useSupabaseUser(),
-            test:'test_value',
+            timeframe: useCurrentTimeFrame(),
             mouse_down: false,
-            current_tracker: useCurrentTracker()
-            
+            current_tracker: useCurrentTracker(),
+            tracker_history: useCurrentCaptures(),
         }
     },
     methods:{
-        update_name(e:any){
-            if (e.target.innerHTML.length > 16 && e.key != "Backspace"){
-                e.preventDefault();
-            }
-
-            if (e.key == "Enter"){
-                e.target.blur()
-                this.tracker.name = e.target.innerHTML.toString()
-                change_tracker_name(this.client, this.user, this.tracker)
-            }
-            return false
-        },
+        
+        // changed the active state of a tracker
         update_active(value:boolean){
             this.tracker.active = value
             change_tracker_active(this.client, this.user, this.tracker)
         },
-        click_animation(e:any){
+        
+        // triggers the click animation for a TrackerButton
+        async click_animation(e:any){
             e.target.classList.add('scaled')
+            
+            
             this.current_tracker = this.tracker
+            
+            
             e.target.addEventListener('animationend', function (){
                 e.target.classList.remove('scaled')
             }, { once: true })
+
+            this.tracker_history = await get_tracker_history(this.client, this.user, this.tracker, this.timeframe)
         }
     },
     computed:{
@@ -59,6 +57,18 @@ export default {
                 return this.tracker.url
             }
         },
+
+        // updates the border color if the current tracker is the one selected
+        displayIsActive(){
+            if (this.current_tracker == this.tracker){
+                return {
+                    'border-color': "#4d6ab8"
+                }
+            }
+            else {
+                return {}
+            }
+        }
     },
 
 
@@ -67,7 +77,7 @@ export default {
 </script>
 
 <template>
-<div :class="[style_theme]" class="button-container" id="button-container" @mousedown.self="click_animation">
+<div :class="[style_theme]" :style="[displayIsActive]" class="button-container" id="button-container" @mousedown.self="click_animation">
     <div class="button-row-one">
         <div :class="[style_theme]" class="button-text large" @keydown="update_name">{{ tracker.name }}</div>
         
