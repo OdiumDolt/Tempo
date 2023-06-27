@@ -3,7 +3,7 @@
     <div class="body" :class="[style_theme]">
         
         <ToolsPopup v-if="add_tracker_window" @closePopUp = "closeAddWindow">
-            <DashboardAddTrackerWindow style_theme="style_theme" @closePopUp = "closeAddWindow" @validation_check="AddWebsiteTracker" ref='add_window'>
+            <DashboardAddTrackerWindow style_theme="style_theme" @closePopUp = "closeAddWindow" ref='add_window'>
 
             </DashboardAddTrackerWindow> 
         </ToolsPopup>
