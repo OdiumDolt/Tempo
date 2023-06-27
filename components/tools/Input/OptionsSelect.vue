@@ -9,8 +9,12 @@ export default {
         size: {
             type: String,
             required: true
+        },
+        modelValue:{
+            required:true
         }
     },
+    emits:['update:modelValue'],
     data(){
         return {
             width: null as null | number,
