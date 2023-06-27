@@ -1,6 +1,11 @@
 <script lang="ts">
 export default {
-
+    data(){
+        return{
+            timeframes: ['daily', 'weekly', 'monthly', 'max'],
+            timeframe:useCurrentTimeFrame()
+        }
+    }
 
 }
 </script>
@@ -8,7 +13,7 @@ export default {
 <template>
     <div class="breakdown-container">
         <div class="menu-bar-container">
-            <ToolsInputOptionsSelect :options="['daily', 'weekly', 'monthly', 'max']" :size="'1.9vh'">
+            <ToolsInputOptionsSelect :options="timeframes" :size="'1.9vh'" v-model="timeframe">
 
             </ToolsInputOptionsSelect>
             <div>
