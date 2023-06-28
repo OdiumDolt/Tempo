@@ -66,7 +66,10 @@ export default {
         }
     },
     methods:{
-        
+        new_option_clicked(index:number){
+            this.selected_option = index
+            this.$emit('update:modelValue', (this.options as any)[index])
+        }
     },
     mounted(){
         this.selected_option = 0
@@ -78,7 +81,7 @@ export default {
 <template>
 <div id="options-select-container">
     <div class="options-container" id="options-container">
-        <span v-for="(value, index) in options" class="options" :id="'options-interable_' + index" :style="font_size" @click="selected_option = index">
+        <span v-for="(value, index) in options" class="options" :id="'options-interable_' + index" :style="font_size" @click="new_option_clicked(index)">
             {{ value }}
         </span>
     </div>
