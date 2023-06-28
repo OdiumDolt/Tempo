@@ -3,10 +3,9 @@ export default {
     data(){
         return{
             timeframes: ['daily', 'weekly', 'monthly', 'max'],
-            timeframe:useCurrentTimeFrame()
+            timeframe: useCurrentTimeFrame()
         }
     }
-
 }
 </script>
 
