@@ -6,7 +6,7 @@ const useCurrentTracker = () => useState<Tracker | null>('tracker', () => null)
 var localDate = new Date();
 var utcTime = localDate.getTime()
 var utcDate = new Date(utcTime);
-utcDate.setDate(utcDate.getDate() - 100)
+utcDate.setDate(utcDate.getDate() - 1)
 
 const useCurrentTimeFrame = () => useState<Date>('timeframe', () => utcDate)
 

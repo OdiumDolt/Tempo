@@ -24,6 +24,11 @@ export default {
             if (this.tracker != null){
                 this.tracker_history = await get_tracker_history(this.client, this.user, this.tracker, this.timeframe)
             }
+        },
+        async timeframe(){
+            if (this.tracker != null) {
+                
+            }
         }
     }
     

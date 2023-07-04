@@ -25,7 +25,7 @@ export default {
     
 @keyframes slowBlur
     to
-        background-color: rgb(22 22 22 / 75%)
+        background-color: rgb(22 22 22 / 82%)
 
 
 .blured-background-obstruction

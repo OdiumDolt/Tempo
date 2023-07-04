@@ -11,7 +11,7 @@ export default {
             required: true
         },
         modelValue:{
-            required:true
+            // required:true
         }
     },
     emits:['update:modelValue'],
@@ -81,8 +81,8 @@ export default {
 <template>
 <div id="options-select-container">
     <div class="options-container" id="options-container">
-        <span v-for="(value, index) in options" class="options" :id="'options-interable_' + index" :style="font_size" @click="new_option_clicked(index)">
-            {{ value }}
+        <span v-for="(value, index) in (options as any[])" class="options" :id="'options-interable_' + index" :style="font_size" @click="new_option_clicked(index)">
+            {{ value.name }}
         </span>
     </div>
     <div class="selector-box">
